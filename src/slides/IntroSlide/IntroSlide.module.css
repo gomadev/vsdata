@@ -1,0 +1,116 @@
+.introSlide {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xl);
+  padding: var(--spacing-xl);
+  background: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--neo-shadow-raised);
+  max-width: 800px;
+  width: 90%;
+}
+
+.title {
+  font-size: 6rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.05em;
+  text-shadow: 
+    4px 4px 8px var(--shadow-dark),
+    -4px -4px 8px var(--shadow-light);
+  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: fadeIn 1s ease-out 0.2s backwards;
+}
+
+.subtitle {
+  animation: fadeIn 1s ease-out 0.4s backwards;
+}
+
+.authors {
+  font-size: 2rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin: 0;
+}
+
+.authorName {
+  position: relative;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.authorName::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+  border-radius: var(--radius-sm);
+  box-shadow: var(--neo-shadow-flat);
+}
+
+.separator {
+  color: var(--accent);
+  font-weight: 300;
+}
+
+.decorativeLine {
+  width: 200px;
+  height: 4px;
+  background: var(--bg-primary);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--neo-shadow-pressed);
+  animation: fadeIn 1s ease-out 0.6s backwards;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .title {
+    font-size: 3.5rem;
+  }
+  
+  .authors {
+    font-size: 1.5rem;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .separator {
+    display: none;
+  }
+  
+  .content {
+    width: 95%;
+    padding: var(--spacing-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2.5rem;
+  }
+  
+  .authors {
+    font-size: 1.25rem;
+  }
+}

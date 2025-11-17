@@ -1,0 +1,1 @@
+export { InsightsSlide } from './InsightsSlide';

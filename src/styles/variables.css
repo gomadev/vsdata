@@ -1,0 +1,53 @@
+/* Variáveis globais para o tema neomórfico */
+:root {
+  /* Cores principais */
+  --bg-primary: #e0e5ec;
+  --bg-secondary: #f5f7fa;
+  --text-primary: #2c3e50;
+  --text-secondary: #5a6c7d;
+  --accent: #667eea;
+  --accent-hover: #764ba2;
+  
+  /* Sombras neomórficas */
+  --shadow-light: #ffffff;
+  --shadow-dark: #a3b1c6;
+  
+  /* Sombras para efeitos */
+  --neo-shadow-raised: 
+    12px 12px 24px var(--shadow-dark),
+    -12px -12px 24px var(--shadow-light);
+  
+  --neo-shadow-pressed: 
+    inset 8px 8px 16px var(--shadow-dark),
+    inset -8px -8px 16px var(--shadow-light);
+  
+  --neo-shadow-flat: 
+    6px 6px 12px var(--shadow-dark),
+    -6px -6px 12px var(--shadow-light);
+  
+  /* Transições */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Espaçamentos */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  
+  /* Border radius */
+  --radius-sm: 10px;
+  --radius-md: 20px;
+  --radius-lg: 30px;
+  --radius-full: 50%;
+}
+
+/* Tema escuro (opcional para futuro) */
+[data-theme="dark"] {
+  --bg-primary: #2c3e50;
+  --bg-secondary: #34495e;
+  --text-primary: #ecf0f1;
+  --text-secondary: #bdc3c7;
+  --shadow-light: #394d63;
+  --shadow-dark: #1a252f;
+}

@@ -1,0 +1,128 @@
+.slide {
+  width: 100%;
+  height: 100%;
+  padding: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  animation: fadeIn 0.6s ease-out;
+  overflow-y: auto;
+}
+
+.slideTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+  margin: 0 0 var(--spacing-lg) 0;
+  text-shadow: 
+    2px 2px 4px var(--shadow-dark),
+    -2px -2px 4px var(--shadow-light);
+}
+
+.chartPlaceholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-xl);
+}
+
+.placeholderIcon {
+  font-size: 4rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.chartPlaceholder h3 {
+  font-size: 2rem;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.placeholderText {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0;
+}
+
+.chartExample {
+  width: 100%;
+  max-width: 600px;
+  margin-top: var(--spacing-lg);
+}
+
+.barExample {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  height: 200px;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: var(--bg-primary);
+  border-radius: var(--radius-md);
+  box-shadow: var(--neo-shadow-pressed);
+}
+
+.bar {
+  flex: 1;
+  background: linear-gradient(180deg, var(--accent), var(--accent-hover));
+  border-radius: var(--radius-sm);
+  box-shadow: var(--neo-shadow-flat);
+  transition: var(--transition-smooth);
+  animation: barGrow 0.8s ease-out backwards;
+}
+
+.bar:hover {
+  transform: scaleY(1.05);
+  box-shadow: var(--neo-shadow-raised);
+}
+
+.bar:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.bar:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.bar:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.bar:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.bar:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+@keyframes barGrow {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .slideTitle {
+    font-size: 2rem;
+  }
+  
+  .slide {
+    padding: var(--spacing-lg);
+  }
+  
+  .chartPlaceholder {
+    padding: var(--spacing-lg);
+  }
+  
+  .chartPlaceholder h3 {
+    font-size: 1.5rem;
+  }
+}

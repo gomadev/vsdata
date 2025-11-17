@@ -1,0 +1,21 @@
+.neoCard {
+  background: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  transition: var(--transition-smooth);
+}
+
+.raised {
+  box-shadow: var(--neo-shadow-raised);
+}
+
+.raised:hover {
+  box-shadow: 
+    16px 16px 32px var(--shadow-dark),
+    -16px -16px 32px var(--shadow-light);
+  transform: translateY(-4px);
+}
+
+.flat {
+  box-shadow: var(--neo-shadow-flat);
+}

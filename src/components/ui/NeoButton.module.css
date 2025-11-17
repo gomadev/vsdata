@@ -1,0 +1,97 @@
+.neoButton {
+  border: none;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.neoButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.neoButton:not(:disabled):hover {
+  transform: translateY(-2px);
+}
+
+.neoButton:not(:disabled):active {
+  transform: translateY(0);
+}
+
+/* Variantes */
+.raised {
+  box-shadow: var(--neo-shadow-raised);
+}
+
+.raised:not(:disabled):hover {
+  box-shadow: 
+    16px 16px 32px var(--shadow-dark),
+    -16px -16px 32px var(--shadow-light);
+}
+
+.raised:not(:disabled):active {
+  box-shadow: var(--neo-shadow-pressed);
+}
+
+.pressed {
+  box-shadow: var(--neo-shadow-pressed);
+}
+
+.flat {
+  box-shadow: var(--neo-shadow-flat);
+}
+
+/* Tamanhos */
+.sm {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: 0.875rem;
+  border-radius: var(--radius-sm);
+  min-width: 60px;
+  min-height: 36px;
+}
+
+.md {
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: 1rem;
+  border-radius: var(--radius-md);
+  min-width: 100px;
+  min-height: 50px;
+}
+
+.lg {
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: 1.125rem;
+  border-radius: var(--radius-md);
+  min-width: 140px;
+  min-height: 60px;
+}
+
+/* Efeito de brilho ao hover */
+.neoButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.neoButton:not(:disabled):hover::before {
+  left: 100%;
+}

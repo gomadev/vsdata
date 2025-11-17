@@ -1,0 +1,207 @@
+.chartContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg);
+  background: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--neo-shadow-raised);
+}
+
+.svg {
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+  overflow: visible;
+}
+
+/* Fatias da pizza principal */
+.slice {
+  transition: var(--transition-smooth);
+  stroke: var(--bg-primary);
+  stroke-width: 0.5;
+}
+
+.slice:not(.otherSlice):hover {
+  opacity: 0.8;
+  transform: scale(1.02);
+  transform-origin: center;
+}
+
+.otherSlice {
+  cursor: pointer;
+  stroke: var(--bg-primary);
+  stroke-width: 2;
+  stroke-dasharray: 3, 3;
+  transition: all 0.3s ease;
+}
+
+.otherSlice:hover {
+  opacity: 1;
+  filter: brightness(1.2) drop-shadow(0 0 10px currentColor);
+  stroke-width: 3;
+  transform: scale(1.05);
+  transform-origin: 50% 50%;
+}
+
+/* Animações de transição */
+.mainPie {
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transform-origin: center;
+}
+
+.fadeOut {
+  opacity: 0 !important;
+  transform: scale(0.8);
+  pointer-events: none;
+}
+
+.expandedPie {
+  transition: opacity 0.6s ease-in, transform 0.3s ease-out;
+  transform-origin: center;
+}
+
+.fadeIn {
+  opacity: 1 !important;
+  transform: scale(1);
+}
+
+.expandedSlice {
+  transition: all 0.3s ease;
+  stroke: var(--bg-primary);
+  stroke-width: 1;
+}
+
+.expandedSlice:hover {
+  opacity: 0.9;
+  filter: brightness(1.15) drop-shadow(0 0 8px currentColor);
+}
+
+/* Labels */
+.sliceLabel {
+  font-size: 3px;
+  font-weight: 600;
+  fill: var(--text-primary);
+  pointer-events: none;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.expandedLabel {
+  font-size: 2.5px;
+  font-weight: 600;
+  fill: var(--text-primary);
+  pointer-events: none;
+  text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.9);
+  transition: opacity 0.3s ease;
+}
+
+.labelName {
+  font-size: 3.5px;
+  font-weight: 700;
+}
+
+.labelValue {
+  font-size: 2.8px;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+/* Legenda */
+.legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--spacing-sm);
+  width: 100%;
+  max-width: 500px;
+  padding: var(--spacing-md);
+  background: var(--bg-primary);
+  border-radius: var(--radius-md);
+  box-shadow: var(--neo-shadow-pressed);
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs);
+  transition: var(--transition-smooth);
+}
+
+.legendItem:hover {
+  transform: translateX(4px);
+}
+
+.legendColor {
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--neo-shadow-flat);
+  flex-shrink: 0;
+}
+
+.legendLabel {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.legendLabel strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Dica */
+.hint {
+  font-size: 0.875rem;
+  color: var(--accent);
+  text-align: center;
+  padding: var(--spacing-sm);
+  background: var(--bg-primary);
+  border-radius: var(--radius-md);
+  box-shadow: var(--neo-shadow-pressed);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .chartContainer {
+    padding: var(--spacing-md);
+  }
+  
+  .legend {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+  
+  .legendLabel {
+    font-size: 0.8rem;
+  }
+  
+  .hint {
+    font-size: 0.75rem;
+  }
+}
+
+/* Animação de entrada */
+@keyframes chartFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.chartContainer {
+  animation: chartFadeIn 0.8s ease-out;
+}

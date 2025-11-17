@@ -1,0 +1,9 @@
+.neoContainer {
+  background: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: var(--neo-shadow-raised);
+  max-width: 1400px;
+  width: 95%;
+  margin: 0 auto;
+}
