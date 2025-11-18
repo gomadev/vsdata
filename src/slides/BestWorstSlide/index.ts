@@ -1,0 +1,1 @@
+export { BestWorstSlide } from './BestWorstSlide';

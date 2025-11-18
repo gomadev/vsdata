@@ -1,0 +1,175 @@
+.slide {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.title {
+  font-size: 1.8rem;
+  color: var(--text-primary);
+  margin: 0;
+  animation: titleSlide 1s ease-out;
+}
+
+@keyframes titleSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.regionsContainer {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+}
+
+.regionCard {
+  flex: 1;
+  min-width: 180px;
+  max-width: 200px;
+  padding: 2rem 1.5rem;
+  background: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 8px 8px 20px var(--shadow-dark), -8px -8px 20px var(--shadow-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  animation: regionPop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) backwards;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes regionPop {
+  from {
+    opacity: 0;
+    transform: scale(0.3) rotate(-180deg);
+  }
+}
+
+.regionCard::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+  transform: translate(-50%, -50%);
+  animation: ripple 3s infinite;
+}
+
+@keyframes ripple {
+  0% { width: 0; height: 0; opacity: 1; }
+  100% { width: 300px; height: 300px; opacity: 0; }
+}
+
+.regionCard:hover {
+  transform: scale(1.1) translateY(-10px) rotate(2deg);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.regionIcon {
+  font-size: 3rem;
+  animation: iconBounce 2s ease-in-out infinite;
+}
+
+@keyframes iconBounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-15px) scale(1.2); }
+}
+
+.regionName {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+  animation: nameWave 2s ease-in-out infinite;
+}
+
+@keyframes nameWave {
+  0%, 100% { transform: skewX(0deg); }
+  50% { transform: skewX(-5deg); }
+}
+
+.icmCircle {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0.5rem 0;
+}
+
+.circleProgress {
+  transform: rotate(-90deg);
+  width: 100%;
+  height: 100%;
+}
+
+.circleBg {
+  fill: none;
+  stroke: rgba(0, 0, 0, 0.1);
+  stroke-width: 8;
+}
+
+.circleFill {
+  fill: none;
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke-dasharray 1s ease-out;
+  animation: circleGrow 1.5s ease-out backwards, circlePulse 2s ease-in-out 1.5s infinite;
+}
+
+@keyframes circleGrow {
+  from { stroke-dasharray: 0 314; }
+}
+
+@keyframes circlePulse {
+  0%, 100% { stroke-width: 8; opacity: 1; }
+  50% { stroke-width: 10; opacity: 0.8; }
+}
+
+.icmNumber {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  animation: numberSpin 3s ease-in-out infinite;
+}
+
+@keyframes numberSpin {
+  0%, 100% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+  50% { transform: translate(-50%, -50%) rotate(360deg) scale(1.2); }
+}
+
+.regionStats {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  animation: statsFlash 2s ease-in-out infinite;
+}
+
+@keyframes statsFlash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}

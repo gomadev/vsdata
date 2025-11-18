@@ -1,0 +1,107 @@
+.container {
+  background: var(--bg-primary);
+  border: 4px solid rgba(255, 255, 255, 0.9);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: 20px 20px 60px var(--shadow-dark),
+              -20px -20px 60px var(--shadow-light);
+  overflow-x: auto;
+}
+
+.svg {
+  display: block;
+}
+
+.cell {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cellRect {
+  rx: 6;
+  stroke: rgba(255, 255, 255, 0.2);
+  stroke-width: 2;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+  animation: cellPulse 3s ease-in-out infinite;
+}
+
+@keyframes cellPulse {
+  0%, 100% {
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+  }
+  50% {
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.3));
+  }
+}
+
+.cell:hover .cellRect {
+  stroke: rgba(255, 255, 255, 0.6);
+  stroke-width: 3;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+  transform: scale(1.05);
+}
+
+.cellValue {
+  fill: rgba(255, 255, 255, 0.9);
+  font-size: 0.75rem;
+  font-weight: 600;
+  pointer-events: none;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.axisLabel {
+  fill: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.tooltip {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.tooltipVisible {
+  opacity: 1;
+}
+
+.tooltipBg {
+  fill: var(--bg-primary);
+  stroke: rgba(255, 255, 255, 0.4);
+  stroke-width: 2;
+  rx: 8;
+  filter: drop-shadow(4px 4px 12px rgba(0, 0, 0, 0.5));
+}
+
+.tooltipText {
+  fill: var(--text-primary);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.tooltipLabel {
+  fill: var(--text-secondary);
+  font-size: 0.75rem;
+}
+
+.legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.legendGradient {
+  width: 200px;
+  height: 20px;
+  border-radius: 10px;
+  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.2),
+              inset -2px -2px 4px rgba(255, 255, 255, 0.1);
+}
+
+.legendLabel {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}

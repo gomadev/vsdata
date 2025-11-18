@@ -1,0 +1,149 @@
+.slide {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.title {
+  font-size: 2rem;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin: 0;
+  text-align: center;
+}
+
+.lanes {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1200px;
+}
+
+.laneCard {
+  flex: 1;
+  min-width: 180px;
+  max-width: 220px;
+  padding: 2rem 1.5rem;
+  background: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 10px 10px 30px var(--shadow-dark),
+              -10px -10px 30px var(--shadow-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: cardPop 0.5s ease-out backwards;
+  transition: all 0.3s ease;
+}
+
+.laneCard:nth-child(1) { animation-delay: 0s; }
+.laneCard:nth-child(2) { animation-delay: 0.1s; }
+.laneCard:nth-child(3) { animation-delay: 0.2s; }
+.laneCard:nth-child(4) { animation-delay: 0.3s; }
+.laneCard:nth-child(5) { animation-delay: 0.4s; }
+
+@keyframes cardPop {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+.laneCard:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.laneIcon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  animation: iconShift 3s ease-in-out infinite;
+}
+
+@keyframes iconShift {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(5px); }
+}
+
+.laneNumber {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1.2;
+  text-align: center;
+  word-wrap: break-word;
+  max-width: 100%;
+  animation: categoryWiggle 3s ease-in-out infinite;
+}
+
+@keyframes categoryWiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-2deg); }
+  75% { transform: rotate(2deg); }
+}
+
+.laneLabel {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.divider {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  margin: 1rem 0;
+}
+
+.metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.metricValue {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.icmValue {
+  animation: icmPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes icmPulse {
+  0%, 100% { 
+    color: var(--text-primary);
+    transform: scale(1);
+  }
+  50% { 
+    color: var(--accent);
+    transform: scale(1.1);
+  }
+}
+
+.metricLabel {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-align: center;
+}

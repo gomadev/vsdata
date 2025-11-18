@@ -1,79 +1,86 @@
-# VS Dados - Apresentação Neomórfica
+# Análise ICM - Rodovias Federais 2025
 
-Apresentação profissional de visualização de dados com design neomórfico, desenvolvida em React + TypeScript.
+Apresentação interativa de visualização de dados para análise do Índice de Conservação e Manutenção (ICM) das rodovias federais brasileiras.
+
+## 🎯 Objetivo
+
+Demonstrar princípios de storytelling com dados através de visualizações interativas e minimalistas, analisando ~97mil trechos de rodovias pavimentadas.
 
 ## 🎨 Características
 
-- **Design Neomórfico**: Interface moderna com efeitos de sombra suaves
-- **Navegação Fluida**: Transições animadas entre slides sem redirecionamento
-- **Totalmente Responsivo**: Funciona perfeitamente em desktop e mobile
-- **Navegação por Teclado**: Use as setas ← → ou Espaço para navegar
-- **TypeScript**: Código 100% tipado para maior segurança
-- **Modular**: Componentes reutilizáveis e bem organizados
+- **Design Neomórfico Minimalista**: Bordas brancas, sombras suaves, zero clutter
+- **Gráfico de Pizza Inovador**: Expansão de fatias pequenas com rotação automática
+- **Navegação Fluida**: Transições animadas entre 6 slides
+- **Navegação por Teclado**: Setas ← → ou Espaço
+- **Acessibilidade**: ARIA labels, contraste adequado, texto sempre horizontal
+- **TypeScript + React 18**: Código 100% tipado
 
 ## 📁 Estrutura do Projeto
 
 ```
 src/
-├── components/          # Componentes reutilizáveis
-│   ├── ui/             # Componentes UI base (Button, Card, Container)
-│   └── SlideNavigation/ # Componente de navegação
-├── slides/             # Slides da apresentação
-│   ├── IntroSlide/
-│   ├── DataOverviewSlide/
-│   ├── VisualizationSlide/
-│   ├── InsightsSlide/
-│   └── ConclusionSlide/
-├── hooks/              # Custom hooks
-├── styles/             # Estilos globais e variáveis
-├── types/              # Definições TypeScript
-└── App.tsx             # Componente principal
+├── components/
+│   ├── NeoPieChart/      # Gráfico pizza interativo com expansão
+│   ├── NeoBarChart/      # Gráfico de barras com hover
+│   ├── SlideNavigation/  # Controles de navegação
+│   └── ui/               # Buttons, Cards, Containers
+├── slides/               # 6 slides da apresentação
+│   ├── IntroSlide/       # Título e autores
+│   ├── ContextSlide/     # Problema (% crítico)
+│   ├── DataOverviewSlide/# Gráfico pizza ICM
+│   ├── VisualizationSlide/# Ranking estados
+│   ├── InsightsSlide/    # Princípios aplicados
+│   └── ConclusionSlide/  # Insights finais
+├── hooks/                # useICMData, useSlideNavigation
+├── utils/                # dataLoader (processa CSV)
+├── data/                 # CSVs + dicionário de dados
+├── styles/               # Variáveis CSS + global
+├── types/                # Interfaces TypeScript
+└── App.tsx               # Orquestrador principal
 ```
 
-## 🚀 Como Usar
+## 🚀 Como Executar
 
 ### Desenvolvimento
 ```bash
+npm install
 npm run dev
 ```
-Abre em http://localhost:5173
+Acesse: http://localhost:5173
 
-### Build para Produção
+### Build
 ```bash
 npm run build
-```
-
-### Preview da Build
-```bash
 npm run preview
 ```
 
-## 🎯 Personalizando os Slides
+## 📊 Dados
 
-### 1. Editando Slides Existentes
+**Fonte**: Levantamentos ICM Outubro/2025  
+**Arquivos**: `levantamentos_pavimentada_2025_10.csv`  
+**Volume**: 97.231 trechos analisados
 
-Cada slide está em sua própria pasta dentro de `src/slides/`. Por exemplo, para editar o slide de visualizações:
+### Categorias ICM
+- **BOM**: ICM < 30
+- **REGULAR**: 30 ≤ ICM < 50
+- **RUIM**: 50 ≤ ICM < 70
+- **PÉSSIMO**: ICM ≥ 70
 
-```typescript
-// src/slides/VisualizationSlide/VisualizationSlide.tsx
-export const VisualizationSlide: React.FC = () => {
-  return (
-    <div className={styles.slide}>
-      <h2>Seu Título Aqui</h2>
-      {/* Seu conteúdo */}
-    </div>
-  );
-};
-```
+## 🎪 Recursos Implementados
 
-### 2. Adicionando Novos Slides
+### ✅ Requisitos Obrigatórios
+- [x] Storytelling com dados (6 slides narrativos)
+- [x] Marcas visuais adequadas (pizza, barras)
+- [x] Interatividade (hover, expansão, navegação)
+- [x] Elementos dinâmicos (rotação, animações)
+- [x] Gráficos apropriados por tipo de dado
+- [x] Acessibilidade (ARIA, teclado, contraste)
 
-1. Crie uma nova pasta em `src/slides/`:
-```bash
-src/slides/MeuNovoSlide/
-├── MeuNovoSlide.tsx
-├── MeuNovoSlide.module.css
-└── index.ts
+### 💡 Inovações Técnicas
+- **Gráfico de Pizza Inteligente**: Detecta fatias < 5%, permite expansão em hover
+- **Rotação Sincronizada**: Pizza gira, texto permanece horizontal
+- **Pausas Automáticas**: Animação pausa a 90° para leitura
+- **Minimalismo Extremo**: Bordas brancas, zero texto desnecessário
 ```
 
 2. Adicione o slide em `src/App.tsx`:

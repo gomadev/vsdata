@@ -1,0 +1,1 @@
+export { TechnologySlide } from './TechnologySlide';

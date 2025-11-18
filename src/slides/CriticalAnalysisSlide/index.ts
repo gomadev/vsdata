@@ -1,0 +1,1 @@
+export { CriticalAnalysisSlide } from './CriticalAnalysisSlide';

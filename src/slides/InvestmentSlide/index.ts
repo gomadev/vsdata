@@ -1,0 +1,1 @@
+export { InvestmentSlide } from './InvestmentSlide';

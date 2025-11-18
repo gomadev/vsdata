@@ -1,0 +1,1 @@
+export { KeyFindingsSlide } from './KeyFindingsSlide';

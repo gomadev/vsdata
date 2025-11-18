@@ -1,6 +1,30 @@
 // Exporta todos os slides
 export { IntroSlide } from './IntroSlide';
+export { ContextSlide } from './ContextSlide';
 export { DataOverviewSlide } from './DataOverviewSlide';
+export { StatisticsSlide } from './StatisticsSlide';
+export { CriticalAnalysisSlide } from './CriticalAnalysisSlide';
+export { ComparisonSlide } from './ComparisonSlide';
+export { TimelineSlide } from './TimelineSlide';
 export { VisualizationSlide } from './VisualizationSlide';
+export { BestWorstSlide } from './BestWorstSlide';
+export { RegionComparisonSlide } from './RegionComparisonSlide';
+export { NorthAnalysisSlide } from './NorthAnalysisSlide';
+export { SoutheastAnalysisSlide } from './SoutheastAnalysisSlide';
+export { HeatmapSlide } from './HeatmapSlide';
+export { StackedAreaSlide } from './StackedAreaSlide';
+export { HighwayAnalysisSlide } from './HighwayAnalysisSlide';
+export { SurfaceTypeSlide } from './SurfaceTypeSlide';
+export { LaneAnalysisSlide } from './LaneAnalysisSlide';
+export { EconomicImpactSlide } from './EconomicImpactSlide';
+export { InvestmentSlide } from './InvestmentSlide';
+export { KeyFindingsSlide } from './KeyFindingsSlide';
+export { RecommendationsSlide } from './RecommendationsSlide';
+export { ActionPlanSlide } from './ActionPlanSlide';
+export { TechnologySlide } from './TechnologySlide';
+export { NextStepsSlide } from './NextStepsSlide';
 export { InsightsSlide } from './InsightsSlide';
+export { MethodologySlide } from './MethodologySlide';
+export { TeamSlide } from './TeamSlide';
 export { ConclusionSlide } from './ConclusionSlide';
+

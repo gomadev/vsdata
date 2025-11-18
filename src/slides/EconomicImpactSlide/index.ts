@@ -1,0 +1,1 @@
+export { EconomicImpactSlide } from './EconomicImpactSlide';

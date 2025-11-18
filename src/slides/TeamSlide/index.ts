@@ -1,0 +1,1 @@
+export { TeamSlide } from './TeamSlide';

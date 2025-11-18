@@ -1,0 +1,1 @@
+export { ComparisonSlide } from './ComparisonSlide';

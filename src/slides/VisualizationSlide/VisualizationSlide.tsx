@@ -1,32 +1,55 @@
 import React from 'react';
-import { NeoContainer } from '../../components/ui';
+import { useICMData } from '../../hooks/useICMData';
+import { getTopWorstStates } from '../../utils/dataLoader';
+import { DangerIcon, AlertIcon } from '../../components/Icons';
 import styles from './VisualizationSlide.module.css';
 
 export const VisualizationSlide: React.FC = () => {
+  const { data, loading } = useICMData();
+
+  if (loading || !data.length) {
+    return (
+      <div className={styles.slide}>
+        <h2 className={styles.slideTitle}>Carregando...</h2>
+      </div>
+    );
+  }
+
+  const worstStates = getTopWorstStates(data, 10);
+
   return (
     <div className={styles.slide}>
-      <h2 className={styles.slideTitle}>Visualizações</h2>
+      <h2 className={styles.slideTitle}><DangerIcon size={32} color="#ef4444" style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '0.5rem' }} /> Top 10 Estados Críticos</h2>
+      <p className={styles.subtitle}>Estados com maior ICM médio (piores condições)</p>
       
-      <NeoContainer>
-        <div className={styles.chartPlaceholder}>
-          <div className={styles.placeholderIcon}>📈</div>
-          <h3>Gráfico Principal</h3>
-          <p className={styles.placeholderText}>
-            Aqui você pode integrar bibliotecas como Chart.js, Recharts, 
-            D3.js ou Plotly para criar visualizações interativas dos seus dados.
-          </p>
-          <div className={styles.chartExample}>
-            {/* Espaço reservado para gráfico */}
-            <div className={styles.barExample}>
-              <div className={styles.bar} style={{ height: '60%' }}></div>
-              <div className={styles.bar} style={{ height: '85%' }}></div>
-              <div className={styles.bar} style={{ height: '45%' }}></div>
-              <div className={styles.bar} style={{ height: '70%' }}></div>
-              <div className={styles.bar} style={{ height: '90%' }}></div>
+      <div className={styles.statesGrid}>
+        {worstStates.map((state, index) => (
+          <div 
+            key={state.uf} 
+            className={styles.stateCard}
+            style={{ animationDelay: `${index * 0.1}s` }}
+          >
+            <div className={styles.rank}>#{index + 1}</div>
+            <div className={styles.ufName}>{state.uf}</div>
+            <div className={styles.icmValue}>{state.media.toFixed(1)}</div>
+            <div className={styles.barContainer}>
+              <div 
+                className={styles.barFill}
+                style={{ width: `${(state.media / 100) * 100}%` }}
+              />
+            </div>
+            <div className={styles.status}>
+              {state.media > 70 ? (
+                <><DangerIcon size={20} /> PÉSSIMO</>
+              ) : state.media > 50 ? (
+                <><DangerIcon size={20} color="#f97316" /> RUIM</>
+              ) : (
+                <><AlertIcon size={20} color="#eab308" /> REGULAR</>
+              )}
             </div>
           </div>
-        </div>
-      </NeoContainer>
+        ))}
+      </div>
     </div>
   );
 };

@@ -1,0 +1,1 @@
+export { StatisticsSlide } from './StatisticsSlide';

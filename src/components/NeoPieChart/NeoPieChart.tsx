@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import type { PieChartProps } from './types';
-import { generateSlices, getLabelPosition } from './utils';
+import { generateSlices, getLabelPosition, createArcPath } from './utils';
 import styles from './NeoPieChart.module.css';
 
 export const NeoPieChart: React.FC<PieChartProps> = ({
@@ -14,20 +14,46 @@ export const NeoPieChart: React.FC<PieChartProps> = ({
   const [rotationAngle, setRotationAngle] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   
-  const { mainSlices, otherSlices } = useMemo(
+  const { otherSlices } = useMemo(
     () => generateSlices(data, minSlicePercentage),
     [data, minSlicePercentage]
   );
   
-  const hasOthers = otherSlices.length > 0;
-  const otherSliceIndex = hasOthers ? mainSlices.length - 1 : -1;
+  // Todas as fatias para mostrar no gráfico principal
+  const allSlices = useMemo(() => {
+    const total = data.reduce((sum, item) => sum + item.value, 0);
+    let currentAngle = -90;
+    
+    return data.map((item, index) => {
+      const percentage = (item.value / total) * 100;
+      const angle = (percentage / 100) * 360;
+      const startAngle = currentAngle;
+      const endAngle = currentAngle + angle;
+      currentAngle = endAngle;
+      
+      const isSmall = percentage < minSlicePercentage;
+      
+      return {
+        label: item.label,
+        value: item.value,
+        percentage,
+        startAngle,
+        endAngle,
+        color: item.color || ['#667eea', '#764ba2', '#f093fb', '#4facfe', '#43e97b', '#fa709a', '#fee140', '#30cfd0', '#a8edea', '#fed6e3'][index % 10],
+        path: createArcPath(50, 50, 45, startAngle, endAngle),
+        isSmall,
+      };
+    });
+  }, [data, minSlicePercentage]);
   
-  // Debug
-  console.log('NeoPieChart - hasOthers:', hasOthers, 'otherSlices:', otherSlices.length);
+  const smallSlices = allSlices.filter(s => s.isSmall);
+  const hasSmallSlices = smallSlices.length > 0;
+  
+  console.log('Small slices:', smallSlices.length, 'Has small:', hasSmallSlices);
   
   // Rotação automática quando expandido
   useEffect(() => {
-    if (!isExpanded || otherSlices.length === 0) return;
+    if (!isExpanded || smallSlices.length === 0) return;
     
     let animationId: number;
     let lastTime = Date.now();
@@ -50,7 +76,7 @@ export const NeoPieChart: React.FC<PieChartProps> = ({
           const newAngle = (prev + rotationSpeed * delta) % 360;
           
           // Verificar se uma fatia está na posição 90° (direita)
-          otherSlices.forEach((slice) => {
+          smallSlices.forEach((slice) => {
             const sliceMidAngle = (slice.startAngle + slice.endAngle) / 2;
             const currentMidAngle = (sliceMidAngle + newAngle + 90) % 360;
             
@@ -73,7 +99,7 @@ export const NeoPieChart: React.FC<PieChartProps> = ({
     return () => {
       if (animationId) cancelAnimationFrame(animationId);
     };
-  }, [isExpanded, otherSlices, isPaused]);
+  }, [isExpanded, smallSlices, isPaused]);
   
   // Reset ao sair
   const handleMouseLeave = () => {
@@ -91,6 +117,8 @@ export const NeoPieChart: React.FC<PieChartProps> = ({
         height={height}
         viewBox={viewBox}
         className={styles.svg}
+        role="img"
+        aria-label={`Gráfico de pizza mostrando distribuição de ${data.length} categorias`}
       >
         {/* Fundo neomórfico */}
         <defs>
@@ -105,70 +133,55 @@ export const NeoPieChart: React.FC<PieChartProps> = ({
               <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
-          
-          <filter id="neoHighlight">
-            <feGaussianBlur in="SourceAlpha" stdDeviation="2" />
-            <feOffset dx="-2" dy="-2" result="offsetblur" />
-            <feComponentTransfer>
-              <feFuncA type="linear" slope="0.5" />
-            </feComponentTransfer>
-            <feFlood floodColor="white" />
-            <feComposite in2="offsetblur" operator="in" />
-            <feMerge>
-              <feMergeNode />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
         </defs>
         
-        {/* Pizza principal (fade out quando expande) */}
+        {/* Pizza principal - mostra TODAS as fatias */}
         <g
           className={`${styles.mainPie} ${isExpanded ? styles.fadeOut : ''}`}
           opacity={isExpanded ? 0 : 1}
         >
-          {mainSlices.map((slice, index) => {
-            const isOtherSlice = index === otherSliceIndex;
-            
-            return (
-              <g key={`main-${index}`}>
-                <path
-                  d={slice.path}
-                  fill={slice.color}
-                  className={`${styles.slice} ${isOtherSlice ? styles.otherSlice : ''}`}
-                  filter="url(#neoShadow)"
-                  onMouseEnter={() => {
-                    console.log('Mouse enter - isOtherSlice:', isOtherSlice, 'slice:', slice.label);
-                    if (isOtherSlice) {
-                      setIsExpanded(true);
-                    }
-                  }}
-                  style={{
-                    cursor: isOtherSlice ? 'pointer' : 'default',
-                  }}
-                />
-                
-                {/* Label da fatia */}
-                {!isExpanded && (
-                  <text
-                    x={getLabelPosition(50, 50, 45, slice.startAngle, slice.endAngle).x}
-                    y={getLabelPosition(50, 50, 45, slice.startAngle, slice.endAngle).y}
-                    className={styles.sliceLabel}
-                    textAnchor="middle"
-                    dominantBaseline="middle"
-                  >
-                    <tspan className={styles.labelName}>{slice.label}</tspan>
-                    <tspan x={getLabelPosition(50, 50, 45, slice.startAngle, slice.endAngle).x} dy="1.2em" className={styles.labelValue}>
-                      {slice.percentage.toFixed(1)}%
-                    </tspan>
-                  </text>
-                )}
-              </g>
-            );
-          })}
+          {allSlices.map((slice, index) => (
+            <g key={`main-${index}`}>
+              <path
+                d={slice.path}
+                fill={slice.color}
+                className={`${styles.slice} ${slice.isSmall ? styles.smallSlice : ''}`}
+                filter="url(#neoShadow)"
+                onMouseEnter={() => {
+                  if (slice.isSmall) {
+                    setIsExpanded(true);
+                  }
+                }}
+                style={{
+                  cursor: slice.isSmall ? 'pointer' : 'default',
+                }}
+              />
+              
+              {/* Label da fatia - só mostra se não estiver expandido */}
+              {!isExpanded && (
+                <text
+                  x={getLabelPosition(50, 50, 45, slice.startAngle, slice.endAngle).x}
+                  y={getLabelPosition(50, 50, 45, slice.startAngle, slice.endAngle).y}
+                  className={styles.sliceLabel}
+                  textAnchor="middle"
+                  dominantBaseline="middle"
+                >
+                  {slice.percentage >= 3 && (
+                    <>
+                      <tspan className={styles.labelName}>{slice.label}</tspan>
+                      <tspan x={getLabelPosition(50, 50, 45, slice.startAngle, slice.endAngle).x} dy="1.2em" className={styles.labelValue}>
+                        {slice.percentage.toFixed(1)}%
+                      </tspan>
+                    </>
+                  )}
+                </text>
+              )}
+            </g>
+          ))}
         </g>
         
-        {/* Pizza expandida (fade in quando expande) */}
-        {hasOthers && (
+        {/* Pizza expandida - só fatias pequenas ocupam toda a área */}
+        {hasSmallSlices && (
           <g
             className={`${styles.expandedPie} ${isExpanded ? styles.fadeIn : ''}`}
             opacity={isExpanded ? 1 : 0}
@@ -222,7 +235,7 @@ export const NeoPieChart: React.FC<PieChartProps> = ({
       
       {/* Legenda */}
       <div className={styles.legend}>
-        {(isExpanded ? otherSlices : mainSlices).map((slice, index) => (
+        {(isExpanded ? otherSlices : allSlices).map((slice, index) => (
           <div key={`legend-${index}`} className={styles.legendItem}>
             <div
               className={styles.legendColor}
@@ -235,9 +248,9 @@ export const NeoPieChart: React.FC<PieChartProps> = ({
         ))}
       </div>
       
-      {hasOthers && !isExpanded && (
+      {hasSmallSlices && !isExpanded && (
         <div className={styles.hint}>
-          💡 Passe o mouse em "Outros" para ver detalhes
+          💡 Passe o mouse nas fatias pequenas para expandir
         </div>
       )}
     </div>

@@ -1,0 +1,1 @@
+export { HeatmapSlide } from './HeatmapSlide';

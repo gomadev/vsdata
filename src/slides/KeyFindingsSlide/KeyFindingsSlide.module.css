@@ -1,0 +1,76 @@
+.slide {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.title {
+  font-size: 2rem;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.findings {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  max-width: 1000px;
+}
+
+.finding {
+  padding: 1.5rem;
+  background: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 10px 10px 30px var(--shadow-dark),
+              -10px -10px 30px var(--shadow-light);
+  animation: findingSlide 0.6s ease-out backwards;
+  transition: all 0.3s ease;
+}
+
+.finding:nth-child(1) { animation-delay: 0s; }
+.finding:nth-child(2) { animation-delay: 0.15s; }
+.finding:nth-child(3) { animation-delay: 0.3s; }
+.finding:nth-child(4) { animation-delay: 0.45s; }
+
+@keyframes findingSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+}
+
+.finding:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.iconBox {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  animation: iconBounce 2s ease-in-out infinite;
+}
+
+@keyframes iconBounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.finding h3 {
+  font-size: 1.4rem;
+  color: var(--accent);
+  margin: 0 0 1rem;
+}
+
+.finding p {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}

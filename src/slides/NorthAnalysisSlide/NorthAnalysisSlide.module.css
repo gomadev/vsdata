@@ -1,0 +1,158 @@
+.slide {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.title {
+  font-size: 1.8rem;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.content {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.summary {
+  display: flex;
+  justify-content: center;
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+.summaryCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 3rem;
+  background: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 10px 10px 30px var(--shadow-dark),
+              -10px -10px 30px var(--shadow-light);
+}
+
+.summaryIcon {
+  font-size: 3rem;
+  animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+.summaryValue {
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.summaryLabel {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+.states {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.stateCard {
+  padding: 1.5rem;
+  background: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 5px 5px 15px var(--shadow-dark),
+              -5px -5px 15px var(--shadow-light);
+  animation: slideIn 0.5s ease-out backwards;
+  transition: all 0.3s ease;
+}
+
+.stateCard:nth-child(1) { animation-delay: 0s; }
+.stateCard:nth-child(2) { animation-delay: 0.1s; }
+.stateCard:nth-child(3) { animation-delay: 0.2s; }
+.stateCard:nth-child(4) { animation-delay: 0.3s; }
+.stateCard:nth-child(5) { animation-delay: 0.4s; }
+.stateCard:nth-child(6) { animation-delay: 0.5s; }
+.stateCard:nth-child(7) { animation-delay: 0.6s; }
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+}
+
+.stateCard:hover {
+  transform: translateX(10px);
+}
+
+.stateHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.stateName {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.stateICM {
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border-radius: 8px;
+}
+
+.good { color: #10b981; background: rgba(16, 185, 129, 0.1); }
+.warning { color: #f59e0b; background: rgba(245, 158, 11, 0.1); }
+.critical { color: #ef4444; background: rgba(239, 68, 68, 0.1); }
+
+.stateBar {
+  width: 100%;
+  height: 12px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.stateBarFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  animation: barGrow 1s ease-out;
+}
+
+@keyframes barGrow {
+  from { width: 0 !important; }
+}
+
+.stateCount {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  text-align: right;
+}
