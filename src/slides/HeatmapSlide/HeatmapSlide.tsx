@@ -1,6 +1,6 @@
 import React from 'react';
 import { useICMData } from '../../hooks/useICMData';
-import NeoHeatmap from '../../components/NeoHeatmap/NeoHeatmap';
+import NeoStackedBarChart from '../../components/NeoStackedBarChart/NeoStackedBarChart';
 import styles from './HeatmapSlide.module.css';
 
 export const HeatmapSlide: React.FC = () => {
@@ -14,34 +14,41 @@ export const HeatmapSlide: React.FC = () => {
     );
   }
 
-  // Get unique UFs
-  const ufs = [...new Set(data.map(d => d.uf))].sort().slice(0, 15); // Top 15 states
+  // Get unique UFs and top 10
+  const ufs = [...new Set(data.map(d => d.uf))].sort().slice(0, 10);
   const categories = ['BOM', 'REGULAR', 'RUIM', 'PÉSSIMO'];
 
-  // Calculate heatmap data - SWAPPED: categories as columns, UFs as rows
-  const heatmapData = ufs.flatMap(uf => {
+  // Calculate stacked data for chart
+  const chartData = ufs.map((uf) => {
     const ufData = data.filter(d => d.uf === uf);
-    return categories.map(cat => {
+    const total = ufData.length;
+    
+    const segments = categories.map(cat => {
       const count = ufData.filter(d => d.categoria === cat).length;
-      const percentage = ufData.length > 0 ? (count / ufData.length) * 100 : 0;
-      return {
-        row: uf,
-        col: cat,
-        value: percentage
-      };
+      const percentage = total > 0 ? (count / total) * 100 : 0;
+      return percentage;
     });
+
+    return {
+      label: uf,
+      values: segments,
+      total
+    };
   });
 
   return (
     <div className={styles.slide}>
       <h2 className={styles.title}>Matriz ICM por Estado</h2>
-      <NeoHeatmap 
-        data={heatmapData} 
-        rows={ufs}
-        cols={categories}
-        width={700}
-        cellSize={40}
-      />
+      <p className={styles.subtitle}>Distribuição de condições por UF (Top 10)</p>
+      
+      <div className={styles.chartContainer}>
+        <NeoStackedBarChart 
+          data={chartData} 
+          categories={categories}
+          width={900} 
+          height={350}
+        />
+      </div>
     </div>
   );
 };

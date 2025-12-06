@@ -14,14 +14,6 @@
   font-size: 1.8rem;
   color: var(--text-primary);
   margin: 0;
-  animation: titleSlide 1s ease-out;
-}
-
-@keyframes titleSlide {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
 }
 
 .subtitle {
@@ -60,26 +52,8 @@
 @keyframes regionPop {
   from {
     opacity: 0;
-    transform: scale(0.3) rotate(-180deg);
+    transform: scale(0.3);
   }
-}
-
-.regionCard::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
-  transform: translate(-50%, -50%);
-  animation: ripple 3s infinite;
-}
-
-@keyframes ripple {
-  0% { width: 0; height: 0; opacity: 1; }
-  100% { width: 300px; height: 300px; opacity: 0; }
 }
 
 .regionCard:hover {
@@ -88,13 +62,7 @@
 }
 
 .regionIcon {
-  font-size: 3rem;
-  animation: iconBounce 2s ease-in-out infinite;
-}
-
-@keyframes iconBounce {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-15px) scale(1.2); }
+  font-size: 2.5rem;
 }
 
 .regionName {
@@ -102,12 +70,6 @@
   font-weight: 700;
   color: var(--text-primary);
   text-align: center;
-  animation: nameWave 2s ease-in-out infinite;
-}
-
-@keyframes nameWave {
-  0%, 100% { transform: skewX(0deg); }
-  50% { transform: skewX(-5deg); }
 }
 
 .icmCircle {
@@ -148,28 +110,22 @@
 
 .icmNumber {
   position: absolute;
+  font-size: 1.6rem;
+  font-weight: 700;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 2rem;
   font-weight: 700;
   color: var(--text-primary);
-  animation: numberSpin 3s ease-in-out infinite;
 }
 
-@keyframes numberSpin {
-  0%, 100% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
-  50% { transform: translate(-50%, -50%) rotate(360deg) scale(1.2); }
-}
+
 
 .regionStats {
   font-size: 0.9rem;
   color: var(--text-secondary);
   font-weight: 600;
-  animation: statsFlash 2s ease-in-out infinite;
 }
 
-@keyframes statsFlash {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
-}
+

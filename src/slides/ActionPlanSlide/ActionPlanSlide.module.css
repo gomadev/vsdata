@@ -74,12 +74,6 @@
   font-size: 1.5rem;
   font-weight: 700;
   color: white;
-  animation: numberSpin 3s ease-in-out infinite;
-}
-
-@keyframes numberSpin {
-  0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(180deg); }
 }
 
 .phaseInfo {
@@ -121,10 +115,4 @@
   left: 0;
   color: var(--accent);
   font-weight: 700;
-  animation: arrowBlink 2s ease-in-out infinite;
-}
-
-@keyframes arrowBlink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
 }

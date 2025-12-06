@@ -30,19 +30,45 @@
   border: 3px solid rgba(255, 255, 255, 0.8);
   box-shadow: 10px 10px 30px var(--shadow-dark),
               -10px -10px 30px var(--shadow-light);
-  animation: findingSlide 0.6s ease-out backwards;
+  animation: findingReveal 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
   transition: all 0.3s ease;
+  position: relative;
+  border-left: 4px solid var(--accent);
 }
 
-.finding:nth-child(1) { animation-delay: 0s; }
-.finding:nth-child(2) { animation-delay: 0.15s; }
-.finding:nth-child(3) { animation-delay: 0.3s; }
-.finding:nth-child(4) { animation-delay: 0.45s; }
+.finding::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  animation: lineGrow 1s ease-out forwards;
+  animation-delay: var(--delay, 0s);
+}
 
-@keyframes findingSlide {
+.finding:nth-child(1) { --delay: 0s; animation-delay: 0s; }
+.finding:nth-child(2) { --delay: 0.2s; animation-delay: 0.2s; }
+.finding:nth-child(3) { --delay: 0.4s; animation-delay: 0.4s; }
+.finding:nth-child(4) { --delay: 0.6s; animation-delay: 0.6s; }
+
+@keyframes findingReveal {
   from {
     opacity: 0;
-    transform: translateX(-30px);
+    transform: translateX(-40px) skewX(10deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) skewX(0deg);
+  }
+}
+
+@keyframes lineGrow {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
   }
 }
 
@@ -54,12 +80,7 @@
 .iconBox {
   font-size: 3.5rem;
   margin-bottom: 1rem;
-  animation: iconBounce 2s ease-in-out infinite;
-}
-
-@keyframes iconBounce {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+  filter: drop-shadow(0 4px 12px rgba(239, 68, 68, 0.4));
 }
 
 .finding h3 {

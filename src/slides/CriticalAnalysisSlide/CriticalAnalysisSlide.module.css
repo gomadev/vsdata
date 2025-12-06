@@ -17,21 +17,24 @@
 }
 
 .number {
-  font-size: 5rem;
+  font-size: 3.5rem;
   font-weight: 700;
   color: #ef4444;
   line-height: 1;
-  animation: numberPulse 2s ease-in-out infinite;
+  animation: numberGlow 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+  position: relative;
 }
 
-@keyframes numberPulse {
+@keyframes numberGlow {
   0%, 100% {
     transform: scale(1);
-    text-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+    text-shadow: 0 0 20px rgba(239, 68, 68, 0.3),
+                 0 0 40px rgba(239, 68, 68, 0.1);
   }
   50% {
-    transform: scale(1.05);
-    text-shadow: 0 0 40px rgba(239, 68, 68, 0.6);
+    transform: scale(1.08);
+    text-shadow: 0 0 40px rgba(239, 68, 68, 0.6),
+                 0 0 80px rgba(239, 68, 68, 0.3);
   }
 }
 
