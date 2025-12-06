@@ -12,7 +12,7 @@
 
 .slideTitle {
   font-size: 1.6rem;
-  color: var(--text-primary);
+  color: var(--accent-dynamic);
   margin: 0;
 }
 
@@ -94,7 +94,7 @@
   right: -8px;
   width: 40px;
   height: 40px;
-  background: linear-gradient(135deg, #ef4444, #dc2626);
+  background: var(--rank-gradient);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -109,7 +109,7 @@
 .ufName {
   font-size: 1.15rem;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--accent-dynamic);
   text-align: center;
   animation: textWave 2s ease-in-out infinite;
 }
@@ -143,7 +143,7 @@
 
 .barFill {
   height: 100%;
-  background: linear-gradient(90deg, #fbbf24, #ef4444);
+  background: linear-gradient(90deg, var(--color-regular), var(--color-ruim));
   border-radius: 2px;
   animation: barGrow 1.5s ease-out, barPulse 2s ease-in-out 1.5s infinite;
   position: relative;

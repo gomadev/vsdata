@@ -22,8 +22,8 @@ export default function NeoStackedBarChart({
   width = 900,
   height = 350
 }: NeoStackedBarChartProps) {
-  const { bars, maxValue } = useMemo(() => {
-    if (!data.length) return { bars: [], maxValue: 0 };
+  const { bars } = useMemo(() => {
+    if (!data.length) return { bars: [] };
 
     const padding = { top: 30, right: 40, bottom: 60, left: 50 };
     const chartWidth = width - padding.left - padding.right;
@@ -64,7 +64,7 @@ export default function NeoStackedBarChart({
       };
     });
 
-    return { bars, maxValue };
+    return { bars };
   }, [data, categories, colors, width, height]);
 
   if (!data.length) return null;

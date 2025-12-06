@@ -1,9 +1,11 @@
 import React from 'react';
 import { useICMData } from '../../hooks/useICMData';
+import { useColorPalette } from '../../contexts/ColorPaletteContext';
 import styles from './DataOverviewSlide.module.css';
 
 export const DataOverviewSlide: React.FC = () => {
   const { stats, loading } = useICMData();
+  const { colors } = useColorPalette();
 
   if (loading || !stats) {
     return (
@@ -20,10 +22,10 @@ export const DataOverviewSlide: React.FC = () => {
   const pessimoPct = ((stats.pessimo / total) * 100).toFixed(1);
 
   const data = [
-    { label: 'BOM', value: parseFloat(bomPct), color: '#10b981', count: stats.bom, icon: '✓' },
-    { label: 'REGULAR', value: parseFloat(regularPct), color: '#f59e0b', count: stats.regular, icon: '○' },
-    { label: 'RUIM', value: parseFloat(ruimPct), color: '#ef4444', count: stats.ruim, icon: '⚠' },
-    { label: 'PÉSSIMO', value: parseFloat(pessimoPct), color: '#7c2d12', count: stats.pessimo, icon: '✕' }
+    { label: 'BOM', value: parseFloat(bomPct), color: colors[0], count: stats.bom, icon: '✓' },
+    { label: 'REGULAR', value: parseFloat(regularPct), color: colors[1], count: stats.regular, icon: '○' },
+    { label: 'RUIM', value: parseFloat(ruimPct), color: colors[2], count: stats.ruim, icon: '⚠' },
+    { label: 'PÉSSIMO', value: parseFloat(pessimoPct), color: colors[3], count: stats.pessimo, icon: '✕' }
   ].sort((a, b) => b.value - a.value);
 
   const maxValue = Math.max(...data.map(d => d.value));

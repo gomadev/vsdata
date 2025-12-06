@@ -11,8 +11,8 @@
 }
 
 .title {
-  font-size: 1.8rem;
-  color: var(--text-primary);
+  font-size: 1.6rem;
+  color: var(--accent-dynamic);
   margin: 0;
 }
 
@@ -70,7 +70,7 @@
 
 .card h3 {
   font-size: 1.5rem;
-  color: var(--accent);
+  color: var(--accent-dynamic);
   margin: 0;
   text-align: center;
 }
@@ -136,7 +136,7 @@
 .totalValue {
   font-size: 3rem;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--accent-dynamic);
   line-height: 1;
   animation: valuePulse 2s ease-in-out infinite;
 }

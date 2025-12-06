@@ -12,7 +12,7 @@
 
 .title {
   font-size: 1.6rem;
-  color: var(--text-primary);
+  color: var(--accent-dynamic);
   margin: 0;
 }
 
@@ -54,7 +54,7 @@
 .summaryValue {
   font-size: 1.4rem;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--accent-dynamic);
   line-height: 1;
 }
 
@@ -122,9 +122,9 @@
   border-radius: 8px;
 }
 
-.good { color: #10b981; background: rgba(16, 185, 129, 0.1); }
-.warning { color: #f59e0b; background: rgba(245, 158, 11, 0.1); }
-.critical { color: #ef4444; background: rgba(239, 68, 68, 0.1); }
+.good { color: var(--color-bom); background: rgba(16, 185, 129, 0.1); }
+.warning { color: var(--color-regular); background: rgba(245, 158, 11, 0.1); }
+.critical { color: var(--color-ruim); background: rgba(239, 68, 68, 0.1); }
 
 .stateBar {
   width: 100%;

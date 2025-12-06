@@ -11,8 +11,8 @@
 }
 
 .title {
-  font-size: 2rem;
-  color: var(--text-primary);
+  font-size: 1.6rem;
+  color: var(--accent-dynamic);
   margin: 0;
 }
 
@@ -80,7 +80,7 @@
 .laneNumber {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--accent-dynamic);
   line-height: 1.2;
   text-align: center;
   word-wrap: break-word;
@@ -137,7 +137,7 @@
     transform: scale(1);
   }
   50% { 
-    color: var(--accent);
+    color: var(--accent-dynamic);
     transform: scale(1.1);
   }
 }

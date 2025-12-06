@@ -2,6 +2,9 @@ import React from 'react';
 import { useSlideNavigation } from './hooks/useSlideNavigation';
 import { useKeyboardNavigation } from './hooks/useKeyboardNavigation';
 import { SlideNavigation } from './components/SlideNavigation';
+import { ColorPaletteFilter } from './components/ColorPaletteFilter/ColorPaletteFilter';
+import { TextColorFilter } from './components/TextColorFilter/TextColorFilter';
+import { ColorPaletteProvider, useColorPalette } from './contexts/ColorPaletteContext';
 import {
   IntroSlide,
   ContextSlide,
@@ -83,9 +86,15 @@ const App: React.FC = () => {
   useKeyboardNavigation(goToNext, goToPrevious, canGoNext, canGoPrevious);
 
   const CurrentSlideComponent = slides[currentSlide].component;
+  const { setColorPalette } = useColorPalette();
 
   return (
     <div className={styles.app}>
+      <div className={styles.filterContainer}>
+        <ColorPaletteFilter onPaletteChange={setColorPalette} />
+        <TextColorFilter />
+      </div>
+      
       <div 
         className={`${styles.slideContainer} ${
           direction === 'next' ? styles.slideNext : styles.slidePrev
@@ -105,4 +114,12 @@ const App: React.FC = () => {
   );
 };
 
-export default App;
+const AppWithProvider: React.FC = () => {
+  return (
+    <ColorPaletteProvider>
+      <App />
+    </ColorPaletteProvider>
+  );
+};
+
+export default AppWithProvider;

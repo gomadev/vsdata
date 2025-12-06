@@ -1,9 +1,11 @@
 import React, { useMemo } from 'react';
 import { useICMData } from '../../hooks/useICMData';
+import { useColorPalette } from '../../contexts/ColorPaletteContext';
 import { MoneyIcon, AlertIcon, DangerIcon } from '../../components/Icons';
 import styles from './InvestmentSlide.module.css';
 
 export const InvestmentSlide: React.FC = () => {
+  const { colors } = useColorPalette();
   const { data, loading } = useICMData();
 
   const investment = useMemo(() => {
@@ -33,12 +35,12 @@ export const InvestmentSlide: React.FC = () => {
 
   return (
     <div className={styles.slide}>
-      <h2 className={styles.title}><MoneyIcon size={32} color="var(--accent)" style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '0.5rem' }} /> Investimento Necessário</h2>
+      <h2 className={styles.title}><MoneyIcon size={32} color={colors[1]} style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '0.5rem' }} /> Investimento Necessário</h2>
       <p className={styles.subtitle}>Estimativa de recursos para recuperação total</p>
       
       <div className={styles.breakdown}>
         <div className={styles.card}>
-          <div className={styles.cardIcon}><DangerIcon size={48} color="#ef4444" /></div>
+          <div className={styles.cardIcon}><DangerIcon size={48} color={colors[2]} /></div>
           <h3>Trechos Críticos</h3>
           <div className={styles.stats}>
             <div className={styles.stat}>
@@ -53,7 +55,7 @@ export const InvestmentSlide: React.FC = () => {
         </div>
 
         <div className={styles.card}>
-          <div className={styles.cardIcon}><AlertIcon size={48} color="#f59e0b" /></div>
+          <div className={styles.cardIcon}><AlertIcon size={48} color={colors[1]} /></div>
           <h3>Trechos Regulares</h3>
           <div className={styles.stats}>
             <div className={styles.stat}>

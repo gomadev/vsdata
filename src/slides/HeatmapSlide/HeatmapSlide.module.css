@@ -11,10 +11,21 @@
   animation: fadeIn 0.6s ease-out;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1000px;
+  padding: 0 3rem;
+  gap: 2rem;
+  box-sizing: border-box;
+}
+
 .title {
   font-size: 1.8rem;
   font-weight: 700;
-  color: var(--text-primary);
+  color: var(--accent-dynamic);
   margin: 0;
   text-align: center;
 }

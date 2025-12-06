@@ -1,11 +1,15 @@
 import React from 'react';
 import { useICMData } from '../../hooks/useICMData';
+import { useColorPalette } from '../../contexts/ColorPaletteContext';
+import { useDynamicTextColors } from '../../hooks/useDynamicTextColors';
 import { getTopWorstStates } from '../../utils/dataLoader';
 import { DangerIcon, AlertIcon } from '../../components/Icons';
 import styles from './VisualizationSlide.module.css';
 
 export const VisualizationSlide: React.FC = () => {
   const { data, loading } = useICMData();
+  const { colors } = useColorPalette();
+  const textColors = useDynamicTextColors();
 
   if (loading || !data.length) {
     return (
@@ -19,7 +23,7 @@ export const VisualizationSlide: React.FC = () => {
 
   return (
     <div className={styles.slide}>
-      <h2 className={styles.slideTitle}><DangerIcon size={32} color="#ef4444" style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '0.5rem' }} /> Top 10 Estados Críticos</h2>
+      <h2 className={styles.slideTitle}><DangerIcon size={32} color={colors[2]} style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '0.5rem' }} /> Top 10 Estados Críticos</h2>
       <p className={styles.subtitle}>Estados com maior ICM médio (piores condições)</p>
       
       <div className={styles.statesGrid}>
@@ -27,7 +31,11 @@ export const VisualizationSlide: React.FC = () => {
           <div 
             key={state.uf} 
             className={styles.stateCard}
-            style={{ animationDelay: `${index * 0.1}s` }}
+            style={{ 
+              animationDelay: `${index * 0.1}s`,
+              '--rank-gradient': `linear-gradient(135deg, ${colors[2]}, ${colors[3]})`,
+              '--bar-color': state.media > 70 ? colors[2] : state.media > 50 ? colors[1] : colors[0]
+            } as React.CSSProperties}
           >
             <div className={styles.rank}>#{index + 1}</div>
             <div className={styles.ufName}>{state.uf}</div>
@@ -35,16 +43,19 @@ export const VisualizationSlide: React.FC = () => {
             <div className={styles.barContainer}>
               <div 
                 className={styles.barFill}
-                style={{ width: `${(state.media / 100) * 100}%` }}
+                style={{ 
+                  width: `${(state.media / 100) * 100}%`,
+                  backgroundColor: state.media > 70 ? colors[2] : state.media > 50 ? colors[1] : colors[0]
+                }}
               />
             </div>
             <div className={styles.status}>
               {state.media > 70 ? (
-                <><DangerIcon size={20} /> PÉSSIMO</>
+                <><DangerIcon size={20} color={colors[2]} /> PÉSSIMO</>
               ) : state.media > 50 ? (
-                <><DangerIcon size={20} color="#f97316" /> RUIM</>
+                <><DangerIcon size={20} color={colors[1]} /> RUIM</>
               ) : (
-                <><AlertIcon size={20} color="#eab308" /> REGULAR</>
+                <><AlertIcon size={20} color={colors[0]} /> REGULAR</>
               )}
             </div>
           </div>

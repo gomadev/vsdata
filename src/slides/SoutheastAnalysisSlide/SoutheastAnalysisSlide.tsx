@@ -1,10 +1,14 @@
 import React, { useMemo } from 'react';
 import { useICMData } from '../../hooks/useICMData';
-import { CityIcon } from '../../components/Icons';
+import { useColorPalette } from '../../contexts/ColorPaletteContext';
+import { useDynamicTextColors } from '../../hooks/useDynamicTextColors';
+import { CityIcon, ChartIcon } from '../../components/Icons';
 import styles from './SoutheastAnalysisSlide.module.css';
 
 export const SoutheastAnalysisSlide: React.FC = () => {
   const { data, loading } = useICMData();
+  const { colors } = useColorPalette();
+  const textColors = useDynamicTextColors();
 
   const seStats = useMemo(() => {
     if (!data.length) return [];
@@ -37,7 +41,7 @@ export const SoutheastAnalysisSlide: React.FC = () => {
 
   return (
     <div className={styles.slide}>
-      <h2 className={styles.title}><CityIcon size={32} color="#3b82f6" style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '0.5rem' }} /> Região Sudeste - Análise Detalhada</h2>
+      <h2 className={styles.title}><CityIcon size={32} color={colors[3]} style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '0.5rem' }} /> Sudeste - Análise Detalhada</h2>
       <p className={styles.subtitle}>Centro econômico do país - situação das rodovias</p>
       
       <div className={styles.grid}>

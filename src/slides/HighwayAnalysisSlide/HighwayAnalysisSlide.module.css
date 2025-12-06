@@ -12,7 +12,7 @@
 
 .title {
   font-size: 1.6rem;
-  color: var(--text-primary);
+  color: var(--accent-dynamic);
   margin: 0;
 }
 
@@ -105,7 +105,7 @@
   margin-bottom: 0.3rem;
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--accent-dynamic);
   text-align: center;
   line-height: 1.1;
 }
@@ -137,16 +137,16 @@
 }
 
 .icmValue {
-  color: var(--accent);
+  color: var(--accent-dynamic);
   animation: icmGlow 2s ease-in-out infinite;
 }
 
 @keyframes icmGlow {
   0%, 100% {
-    text-shadow: 0 0 5px var(--accent);
+    text-shadow: 0 0 5px var(--accent-dynamic);
   }
   50% {
-    text-shadow: 0 0 15px var(--accent), 0 0 25px var(--accent);
+    text-shadow: 0 0 15px var(--accent-dynamic), 0 0 25px var(--accent-dynamic);
   }
 }
 
@@ -168,7 +168,7 @@
 
 .progressFill {
   height: 100%;
-  background: linear-gradient(90deg, #10b981, #3b82f6, #8b5cf6);
+  background: linear-gradient(90deg, var(--color-bom), var(--accent-dynamic), var(--color-pessimo));
   border-radius: 2px;
   animation: progressGrow 1.5s ease-out, progressFlow 3s linear 1.5s infinite;
 }

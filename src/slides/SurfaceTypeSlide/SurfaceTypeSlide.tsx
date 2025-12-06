@@ -1,10 +1,12 @@
 import React, { useMemo } from 'react';
 import { useICMData } from '../../hooks/useICMData';
+import { useColorPalette } from '../../contexts/ColorPaletteContext';
 import { RoadIcon, ConstructionIcon } from '../../components/Icons';
 import styles from './SurfaceTypeSlide.module.css';
 
 export const SurfaceTypeSlide: React.FC = () => {
   const { data, loading } = useICMData();
+  const { colors } = useColorPalette();
 
   const surfaceStats = useMemo(() => {
     if (!data.length) return [];
@@ -42,9 +44,9 @@ export const SurfaceTypeSlide: React.FC = () => {
           <div key={i} className={styles.card}>
             <div className={styles.typeIcon}>
               {stat.type === 'Pavimentada' ? (
-                <RoadIcon size={64} color="var(--accent)" />
+                <RoadIcon size={64} color={colors[0]} />
               ) : (
-                <ConstructionIcon size={64} color="#f59e0b" />
+                <ConstructionIcon size={64} color={colors[1]} />
               )}
             </div>
             <h3>{stat.type}</h3>

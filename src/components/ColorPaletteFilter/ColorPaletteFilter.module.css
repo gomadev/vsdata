@@ -1,0 +1,115 @@
+.container {
+  position: relative;
+  z-index: 100;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1.2rem;
+  background: var(--bg-primary);
+  border: 2px solid var(--accent);
+  border-radius: 0.6rem;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.button:hover {
+  border-color: var(--text-primary);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.button svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--accent);
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  background: var(--bg-primary);
+  border: 2px solid var(--accent);
+  border-radius: 0.6rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  min-width: 280px;
+  animation: dropdownSlide 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) ease-out;
+}
+
+.option {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.option:not(:last-child) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.option:hover {
+  background: rgba(255, 255, 255, 0.05);
+  padding-left: 1.2rem;
+}
+
+.option.active {
+  background: rgba(255, 255, 255, 0.1);
+  font-weight: 700;
+}
+
+.colorPreview {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.colorBox {
+  width: 18px;
+  height: 18px;
+  border-radius: 0.3rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes dropdownSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes colorPulse {
+  0% {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+  }
+  100% {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+}

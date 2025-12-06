@@ -71,7 +71,7 @@
 
 .solutionCard h3 {
   font-size: 1rem;
-  color: var(--accent);
+  color: var(--accent-dynamic);
   margin: 0;
   font-weight: 600;
 }

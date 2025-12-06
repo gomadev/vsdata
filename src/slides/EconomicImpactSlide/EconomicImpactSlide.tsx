@@ -1,33 +1,35 @@
 import React from 'react';
+import { useColorPalette } from '../../contexts/ColorPaletteContext';
 import { TruckIcon, ClockIcon, MoneyIcon, WrenchIcon, AlertIcon } from '../../components/Icons';
 import styles from './EconomicImpactSlide.module.css';
 
 export const EconomicImpactSlide: React.FC = () => {
+  const { colors } = useColorPalette();
   const impacts = [
     {
       IconComponent: TruckIcon,
-      color: '#3b82f6',
+      colorIdx: 3,
       title: 'Logística',
       value: '+35%',
       description: 'Aumento no custo de transporte em rodovias críticas'
     },
     {
       IconComponent: ClockIcon,
-      color: '#8b5cf6',
+      colorIdx: 2,
       title: 'Tempo',
       value: '+2.5h',
       description: 'Aumento médio no tempo de viagem por 1000km'
     },
     {
       IconComponent: MoneyIcon,
-      color: '#ef4444',
+      colorIdx: 2,
       title: 'PIB',
       value: '-1.2%',
       description: 'Impacto estimado no crescimento econômico anual'
     },
     {
       IconComponent: WrenchIcon,
-      color: '#f59e0b',
+      colorIdx: 1,
       title: 'Manutenção',
       value: 'R$ 42Bi',
       description: 'Investimento necessário para recuperação total'
@@ -43,7 +45,7 @@ export const EconomicImpactSlide: React.FC = () => {
         {impacts.map((impact, i) => (
           <div key={i} className={styles.impactCard}>
             <div className={styles.iconCircle}>
-              <impact.IconComponent size={48} color={impact.color} />
+              <impact.IconComponent size={48} color={colors[impact.colorIdx]} />
             </div>
             <h3 className={styles.impactTitle}>{impact.title}</h3>
             <div className={styles.impactValue}>{impact.value}</div>
@@ -53,7 +55,7 @@ export const EconomicImpactSlide: React.FC = () => {
       </div>
 
       <div className={styles.warning}>
-        <AlertIcon size={24} color="#f59e0b" style={{ marginRight: '0.5rem' }} />
+        <AlertIcon size={24} color={colors[1]} style={{ marginRight: '0.5rem' }} />
         <span>Dados estimados baseados em estudos da CNT e IPEA</span>
       </div>
     </div>

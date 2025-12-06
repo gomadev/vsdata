@@ -1,10 +1,14 @@
 import React, { useMemo } from 'react';
 import { useICMData } from '../../hooks/useICMData';
+import { useColorPalette } from '../../contexts/ColorPaletteContext';
+import { useDynamicTextColors } from '../../hooks/useDynamicTextColors';
 import { ForestIcon, ChartIcon } from '../../components/Icons';
 import styles from './NorthAnalysisSlide.module.css';
 
 export const NorthAnalysisSlide: React.FC = () => {
   const { data, loading } = useICMData();
+  const { colors } = useColorPalette();
+  const textColors = useDynamicTextColors();
 
   const northStats = useMemo(() => {
     if (!data.length) return [];
@@ -35,7 +39,7 @@ export const NorthAnalysisSlide: React.FC = () => {
 
   return (
     <div className={styles.slide}>
-      <h2 className={styles.title}><ForestIcon size={32} color="#10b981" style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '0.5rem' }} /> Região Norte - Análise Detalhada</h2>
+      <h2 className={styles.title}><ForestIcon size={32} color={colors[0]} style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '0.5rem' }} /> Região Norte - Análise Detalhada</h2>
       
       <div className={styles.content}>
         <div className={styles.summary}>
@@ -62,9 +66,9 @@ export const NorthAnalysisSlide: React.FC = () => {
                   className={styles.stateBarFill} 
                   style={{ 
                     width: `${(stat.avgICM / 100) * 100}%`,
-                    background: stat.avgICM > 60 ? 'linear-gradient(90deg, #ef4444, #dc2626)' : 
-                                stat.avgICM > 40 ? 'linear-gradient(90deg, #f59e0b, #d97706)' : 
-                                'linear-gradient(90deg, #10b981, #059669)'
+                    background: stat.avgICM > 60 ? `linear-gradient(90deg, ${colors[2]}, ${colors[3]})` : 
+                                stat.avgICM > 40 ? `linear-gradient(90deg, ${colors[1]}, ${colors[2]})` : 
+                                `linear-gradient(90deg, ${colors[0]}, ${colors[1]})`
                   }}
                 />
               </div>

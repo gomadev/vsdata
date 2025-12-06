@@ -1,10 +1,12 @@
 import React from 'react';
 import { useICMData } from '../../hooks/useICMData';
+import { useColorPalette } from '../../contexts/ColorPaletteContext';
 import { getTopWorstStates } from '../../utils/dataLoader';
 import styles from './BestWorstSlide.module.css';
 
 export const BestWorstSlide: React.FC = () => {
   const { data, loading } = useICMData();
+  const { colors } = useColorPalette();
 
   if (loading || !data.length) return null;
 

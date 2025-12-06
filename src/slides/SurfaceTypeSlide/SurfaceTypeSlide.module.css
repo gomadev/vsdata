@@ -11,8 +11,8 @@
 }
 
 .title {
-  font-size: 2rem;
-  color: var(--text-primary);
+  font-size: 1.6rem;
+  color: var(--accent-dynamic);
   margin: 0;
 }
 
@@ -67,7 +67,7 @@
 
 .card h3 {
   font-size: 1.3rem;
-  color: var(--accent);
+  color: var(--accent-dynamic);
   text-align: center;
   margin: 0 0 1.5rem;
 }

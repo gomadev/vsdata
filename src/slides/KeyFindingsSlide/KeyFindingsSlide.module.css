@@ -11,8 +11,8 @@
 }
 
 .title {
-  font-size: 2rem;
-  color: var(--text-primary);
+  font-size: 1.6rem;
+  color: var(--accent-dynamic);
   margin: 0;
 }
 
@@ -85,7 +85,7 @@
 
 .finding h3 {
   font-size: 1.4rem;
-  color: var(--accent);
+  color: var(--accent-dynamic);
   margin: 0 0 1rem;
 }
 

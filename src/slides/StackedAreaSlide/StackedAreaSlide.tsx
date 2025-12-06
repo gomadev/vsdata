@@ -1,10 +1,12 @@
 import React from 'react';
 import { useICMData } from '../../hooks/useICMData';
+import { useColorPalette } from '../../contexts/ColorPaletteContext';
 import NeoStackedArea from '../../components/NeoStackedArea/NeoStackedArea';
 import styles from './StackedAreaSlide.module.css';
 
 export const StackedAreaSlide: React.FC = () => {
   const { data, loading } = useICMData();
+  const { colors } = useColorPalette();
 
   if (loading || !data.length) {
     return (
@@ -39,7 +41,7 @@ export const StackedAreaSlide: React.FC = () => {
       <NeoStackedArea 
         data={stackedData}
         categories={['BOM', 'REGULAR', 'RUIM', 'PÉSSIMO']}
-        colors={['#10b981', '#f59e0b', '#ef4444', '#7c2d12']}
+        colors={colors}
         width={900}
         height={400}
       />

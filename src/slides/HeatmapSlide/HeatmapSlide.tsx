@@ -1,10 +1,12 @@
 import React from 'react';
 import { useICMData } from '../../hooks/useICMData';
+import { useColorPalette } from '../../contexts/ColorPaletteContext';
 import NeoStackedBarChart from '../../components/NeoStackedBarChart/NeoStackedBarChart';
 import styles from './HeatmapSlide.module.css';
 
 export const HeatmapSlide: React.FC = () => {
   const { data, loading } = useICMData();
+  const { colors } = useColorPalette();
 
   if (loading || !data.length) {
     return (
@@ -38,13 +40,18 @@ export const HeatmapSlide: React.FC = () => {
 
   return (
     <div className={styles.slide}>
-      <h2 className={styles.title}>Matriz ICM por Estado</h2>
-      <p className={styles.subtitle}>Distribuição de condições por UF (Top 10)</p>
+      <div className={styles.header}>
+        <div>
+          <h2 className={styles.title}>Matriz ICM por Estado</h2>
+          <p className={styles.subtitle}>Distribuição de condições por UF (Top 10)</p>
+        </div>
+      </div>
       
       <div className={styles.chartContainer}>
         <NeoStackedBarChart 
           data={chartData} 
           categories={categories}
+          colors={colors}
           width={900} 
           height={350}
         />

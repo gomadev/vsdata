@@ -1,10 +1,14 @@
 import React from 'react';
 import { useICMData } from '../../hooks/useICMData';
+import { useColorPalette } from '../../contexts/ColorPaletteContext';
+import { useDynamicTextColors } from '../../hooks/useDynamicTextColors';
 import { ForestIcon, SunIcon, WheatIcon, CityIcon, SnowIcon, CityIcon as MapIcon } from '../../components/Icons';
 import styles from './RegionComparisonSlide.module.css';
 
 export const RegionComparisonSlide: React.FC = () => {
   const { data, loading } = useICMData();
+  const { colors } = useColorPalette();
+  const textColors = useDynamicTextColors();
 
   if (loading || !data.length) {
     return (
@@ -14,16 +18,16 @@ export const RegionComparisonSlide: React.FC = () => {
     );
   }
 
-  // Define regiões brasileiras
-  const regioes: { [key: string]: { ufs: string[], IconComponent: React.FC<any>, color: string } } = {
-    'Norte': { ufs: ['AC', 'AP', 'AM', 'PA', 'RO', 'RR', 'TO'], IconComponent: ForestIcon, color: '#10b981' },
-    'Nordeste': { ufs: ['AL', 'BA', 'CE', 'MA', 'PB', 'PE', 'PI', 'RN', 'SE'], IconComponent: SunIcon, color: '#f59e0b' },
-    'Centro-Oeste': { ufs: ['DF', 'GO', 'MT', 'MS'], IconComponent: WheatIcon, color: '#8b5cf6' },
-    'Sudeste': { ufs: ['ES', 'MG', 'RJ', 'SP'], IconComponent: CityIcon, color: '#3b82f6' },
-    'Sul': { ufs: ['PR', 'RS', 'SC'], IconComponent: SnowIcon, color: '#06b6d4' }
+  // Define regiões brasileiras com cores dinâmicas
+  const regioes: { [key: string]: { ufs: string[], IconComponent: React.FC<any> } } = {
+    'Norte': { ufs: ['AC', 'AP', 'AM', 'PA', 'RO', 'RR', 'TO'], IconComponent: ForestIcon },
+    'Nordeste': { ufs: ['AL', 'BA', 'CE', 'MA', 'PB', 'PE', 'PI', 'RN', 'SE'], IconComponent: SunIcon },
+    'Centro-Oeste': { ufs: ['DF', 'GO', 'MT', 'MS'], IconComponent: WheatIcon },
+    'Sudeste': { ufs: ['ES', 'MG', 'RJ', 'SP'], IconComponent: CityIcon },
+    'Sul': { ufs: ['PR', 'RS', 'SC'], IconComponent: SnowIcon }
   };
 
-  const regionData = Object.entries(regioes).map(([regiao, info]) => {
+  const regionData = Object.entries(regioes).map(([regiao, info], idx) => {
     const regionRoads = data.filter(d => info.ufs.includes(d.uf));
     const avgICM = regionRoads.length > 0
       ? regionRoads.reduce((sum, d) => sum + d.icm, 0) / regionRoads.length
@@ -33,7 +37,7 @@ export const RegionComparisonSlide: React.FC = () => {
       name: regiao,
       avgICM,
       IconComponent: info.IconComponent,
-      color: info.color,
+      color: colors[idx % colors.length],
       count: regionRoads.length
     };
   }).sort((a, b) => b.avgICM - a.avgICM);

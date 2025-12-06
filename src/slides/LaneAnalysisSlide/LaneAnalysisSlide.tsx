@@ -1,10 +1,12 @@
 import React, { useMemo } from 'react';
 import { useICMData } from '../../hooks/useICMData';
+import { useColorPalette } from '../../contexts/ColorPaletteContext';
 import { CheckIcon, AlertIcon, DangerIcon } from '../../components/Icons';
 import styles from './LaneAnalysisSlide.module.css';
 
 export const LaneAnalysisSlide: React.FC = () => {
   const { data, loading } = useICMData();
+  const { colors } = useColorPalette();
 
   const categoryStats = useMemo(() => {
     if (!data.length) return [];
@@ -41,17 +43,17 @@ export const LaneAnalysisSlide: React.FC = () => {
       
       <div className={styles.lanes}>
         {categoryStats.map((stat, i) => {
-          const iconMap: { [key: string]: { Icon: React.FC<any>, color: string } } = {
-            'BOM': { Icon: CheckIcon, color: '#10b981' },
-            'REGULAR': { Icon: AlertIcon, color: '#eab308' },
-            'RUIM': { Icon: DangerIcon, color: '#f97316' },
-            'PÉSSIMO': { Icon: DangerIcon, color: '#ef4444' }
+          const iconMap: { [key: string]: { Icon: React.FC<any>, colorIdx: number } } = {
+            'BOM': { Icon: CheckIcon, colorIdx: 0 },
+            'REGULAR': { Icon: AlertIcon, colorIdx: 1 },
+            'RUIM': { Icon: DangerIcon, colorIdx: 2 },
+            'PÉSSIMO': { Icon: DangerIcon, colorIdx: 3 }
           };
-          const { Icon, color } = iconMap[stat.category] || iconMap['RUIM'];
+          const { Icon, colorIdx } = iconMap[stat.category] || iconMap['RUIM'];
           return (
             <div key={i} className={styles.laneCard}>
               <div className={styles.laneIcon}>
-                <Icon size={56} color={color} />
+                <Icon size={56} color={colors[colorIdx]} />
               </div>
               <div className={styles.laneNumber}>{stat.category}</div>
               <div className={styles.laneLabel}>Categoria</div>

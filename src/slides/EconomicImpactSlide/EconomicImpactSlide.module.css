@@ -11,8 +11,8 @@
 }
 
 .title {
-  font-size: 2rem;
-  color: var(--text-primary);
+  font-size: 1.6rem;
+  color: var(--accent-dynamic);
   margin: 0;
 }
 
@@ -89,7 +89,7 @@
 .impactValue {
   font-size: 2.5rem;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--accent-dynamic);
   margin-bottom: 1rem;
   animation: valueFlash 2s ease-in-out infinite;
 }
@@ -112,7 +112,7 @@
   gap: 1rem;
   padding: 1rem 2rem;
   background: rgba(245, 158, 11, 0.1);
-  border: 2px solid #f59e0b;
+  border: 2px solid var(--color-regular);
   border-radius: var(--radius-md);
   color: var(--text-secondary);
   font-size: 0.9rem;

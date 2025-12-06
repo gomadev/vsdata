@@ -19,7 +19,7 @@
 .number {
   font-size: 3.5rem;
   font-weight: 700;
-  color: #ef4444;
+  color: var(--color-ruim);
   line-height: 1;
   animation: numberGlow 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
   position: relative;
@@ -67,7 +67,7 @@
 .cardNumber {
   font-size: 2.5rem;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--accent-dynamic);
 }
 
 .cardLabel {
@@ -84,7 +84,7 @@
 }
 
 .insight strong {
-  color: var(--accent);
+  color: var(--accent-dynamic);
   font-weight: 700;
   font-size: 1.4rem;
 }
