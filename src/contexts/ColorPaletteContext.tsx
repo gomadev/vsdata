@@ -2,10 +2,13 @@ import React, { createContext, useContext, useState, ReactNode, useEffect } from
 
 export const COLOR_PALETTES = {
   default: ['#10b981', '#f59e0b', '#ef4444', '#7c2d12'],
-  highContrast: ['#00d084', '#ffab00', '#ff3d3d', '#8b0000'],
-  vivid: ['#00ff88', '#ffff00', '#ff0000', '#cc0000'],
-  accessible: ['#0173b2', '#de8f05', '#cc78bc', '#029e73'],
-  warm: ['#2ecc71', '#f39c12', '#e74c3c', '#8b4513']
+  ocean: ['#0ea5e9', '#06b6d4', '#3b82f6', '#1e40af'],
+  sunset: ['#f97316', '#f43f5e', '#ec4899', '#a855f7'],
+  forest: ['#16a34a', '#22c55e', '#84cc16', '#65a30d'],
+  candy: ['#ec4899', '#f43f5e', '#fbbf24', '#8b5cf6'],
+  midnight: ['#1e293b', '#475569', '#64748b', '#94a3b8'],
+  tropical: ['#06b6d4', '#10b981', '#f59e0b', '#ef4444'],
+  aurora: ['#8b5cf6', '#ec4899', '#f43f5e', '#fbbf24']
 };
 
 export const TEXT_COLOR_PALETTES = {

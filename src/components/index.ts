@@ -5,4 +5,6 @@ export { NeoLineChart } from './NeoLineChart';
 export { NeoPieChart } from './NeoPieChart';
 export { NeoStackedArea } from './NeoStackedArea';
 export { SlideNavigation } from './SlideNavigation';
+export { DarkModeArrow } from './DarkModeArrow';
+export { ThemeToggle } from './ThemeToggle';
 export * from './ui';

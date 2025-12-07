@@ -3,8 +3,8 @@
   /* Cores principais */
   --bg-primary: #e0e5ec;
   --bg-secondary: #f5f7fa;
-  --text-primary: #2c3e50;
-  --text-secondary: #5a6c7d;
+  --text-primary: #1a202c;
+  --text-secondary: #4a5568;
   --accent: #667eea;
   --accent-hover: #764ba2;
   
@@ -19,9 +19,9 @@
   --color-ruim: #ef4444;
   --color-pessimo: #7c2d12;
   
-  /* Sombras neomórficas */
+  /* Sombras neomórficas - Light Mode */
   --shadow-light: #ffffff;
-  --shadow-dark: #a3b1c6;
+  --shadow-dark: #b0bfd9;
   
   /* Sombras para efeitos */
   --neo-shadow-raised: 
@@ -58,14 +58,4 @@
   --radius-md: 20px;
   --radius-lg: 30px;
   --radius-full: 50%;
-}
-
-/* Tema escuro (opcional para futuro) */
-[data-theme="dark"] {
-  --bg-primary: #2c3e50;
-  --bg-secondary: #34495e;
-  --text-primary: #ecf0f1;
-  --text-secondary: #bdc3c7;
-  --shadow-light: #394d63;
-  --shadow-dark: #1a252f;
 }

@@ -1,0 +1,1 @@
+export { DarkModeCarousel } from './DarkModeCarousel';

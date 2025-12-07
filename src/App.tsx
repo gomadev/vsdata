@@ -2,6 +2,7 @@ import React from 'react';
 import { useSlideNavigation } from './hooks/useSlideNavigation';
 import { useKeyboardNavigation } from './hooks/useKeyboardNavigation';
 import { SlideNavigation } from './components/SlideNavigation';
+import { ThemeToggle } from './components/ThemeToggle';
 import { ColorPaletteFilter } from './components/ColorPaletteFilter/ColorPaletteFilter';
 import { TextColorFilter } from './components/TextColorFilter/TextColorFilter';
 import { ColorPaletteProvider, useColorPalette } from './contexts/ColorPaletteContext';
@@ -93,6 +94,7 @@ const App: React.FC = () => {
       <div className={styles.filterContainer}>
         <ColorPaletteFilter onPaletteChange={setColorPalette} />
         <TextColorFilter />
+        <ThemeToggle />
       </div>
       
       <div 

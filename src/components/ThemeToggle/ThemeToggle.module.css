@@ -1,0 +1,31 @@
+.themeButton {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  transition: all 0.3s ease;
+  box-shadow: var(--neo-shadow-raised);
+  user-select: none;
+  padding: 0;
+  flex-shrink: 0;
+
+  &:hover {
+    box-shadow: 
+      0 12px 40px rgba(102, 126, 234, 0.7),
+      0 -12px 40px rgba(255, 255, 255, 1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}

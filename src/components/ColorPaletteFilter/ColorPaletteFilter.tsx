@@ -3,10 +3,13 @@ import styles from './ColorPaletteFilter.module.css';
 
 const COLOR_PALETTES = {
   default: { name: 'Padrão', colors: ['#10b981', '#f59e0b', '#ef4444', '#7c2d12'] },
-  highContrast: { name: 'Alto Contraste', colors: ['#00d084', '#ffab00', '#ff3d3d', '#8b0000'] },
-  vivid: { name: 'Vibrante', colors: ['#00ff88', '#ffff00', '#ff0000', '#cc0000'] },
-  accessible: { name: 'Acessível', colors: ['#0173b2', '#de8f05', '#cc78bc', '#029e73'] },
-  warm: { name: 'Quente', colors: ['#2ecc71', '#f39c12', '#e74c3c', '#8b4513'] }
+  ocean: { name: 'Oceano', colors: ['#0ea5e9', '#06b6d4', '#3b82f6', '#1e40af'] },
+  sunset: { name: 'Pôr do Sol', colors: ['#f97316', '#f43f5e', '#ec4899', '#a855f7'] },
+  forest: { name: 'Floresta', colors: ['#16a34a', '#22c55e', '#84cc16', '#65a30d'] },
+  candy: { name: 'Doce', colors: ['#ec4899', '#f43f5e', '#fbbf24', '#8b5cf6'] },
+  midnight: { name: 'Meia-Noite', colors: ['#1e293b', '#475569', '#64748b', '#94a3b8'] },
+  tropical: { name: 'Tropical', colors: ['#06b6d4', '#10b981', '#f59e0b', '#ef4444'] },
+  aurora: { name: 'Aurora', colors: ['#8b5cf6', '#ec4899', '#f43f5e', '#fbbf24'] }
 };
 
 interface ColorPaletteFilterProps {

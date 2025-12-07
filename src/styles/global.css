@@ -72,17 +72,6 @@ button:focus-visible {
   outline-offset: 2px;
 }
 
-/* Modo escuro - prefers-color-scheme */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-primary: #1f2937;
-    --text-primary: #f5f7fa;
-    --text-secondary: #d1d5db;
-    --shadow-light: rgba(255, 255, 255, 0.1);
-    --shadow-dark: rgba(0, 0, 0, 0.3);
-  }
-}
-
 /* Utilitários */
 .text-center {
   text-align: center;

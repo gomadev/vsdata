@@ -16,12 +16,12 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--neo-shadow-raised);
 }
 
 .filterButton:hover {
   border-color: var(--text-primary);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--neo-shadow-raised);
   transform: translateY(-2px);
 }
 
@@ -31,7 +31,7 @@
 
 .filterButton.active {
   border-color: var(--text-primary);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--neo-shadow-pressed);
 }
 
 .filterButton svg {
@@ -46,12 +46,13 @@
   left: 0;
   background: var(--bg-primary);
   border: 2px solid var(--accent);
-  border-radius: 0.6rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  border-radius: 0.8rem;
+  box-shadow: var(--neo-shadow-raised);
   overflow: hidden;
-  min-width: 280px;
+  min-width: 320px;
   animation: dropdownSlide 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) ease-out;
 }
+
 @keyframes dropdownSlide {
   from {
     opacity: 0;
@@ -63,74 +64,156 @@
   }
 }
 
-.option {
-  width: 100%;
+/* RGB Container */
+.rgbContainer {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.colorPreview {
   display: flex;
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-  background: transparent;
-  border: none;
-  color: var(--text-primary);
-  font-size: 0.95rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  text-align: left;
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 0.6rem;
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.option:not(:last-child) {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+.colorSwatch {
+  width: 60px;
+  height: 60px;
+  border-radius: 0.5rem;
+  box-shadow: var(--neo-shadow-raised);
+  border: 2px solid var(--accent);
+  flex-shrink: 0;
 }
 
-.option:hover {
-  background: rgba(255, 255, 255, 0.05);
-  padding-left: 1.2rem;
-}
-
-.option.selected {
-  background: rgba(255, 255, 255, 0.1);
-  font-weight: 700;
-}
-
-.previewContainer {
+.colorInfo {
   display: flex;
+  flex-direction: column;
   gap: 0.3rem;
 }
 
-.colorBox {
-  width: 18px;
-  height: 18px;
-  border-radius: 0.3rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.paletteName {
-  font-size: 0.95rem;
+.colorValue {
+  font-family: 'Monaco', 'Menlo', monospace;
+  font-size: 1rem;
+  font-weight: 700;
   color: var(--text-primary);
-  font-weight: 500;
+  letter-spacing: 0.05em;
 }
 
-@keyframes dropdownSlide {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.colorCode {
+  font-family: 'Monaco', 'Menlo', monospace;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
 }
 
-@keyframes colorPulse {
-  0% {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+/* Slider Group */
+.sliderGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.sliderLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.channelLabel {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: 0.3rem;
+  color: white;
+  flex-shrink: 0;
+}
+
+.sliderLabel:has(#slider-r) .channelLabel {
+  background: linear-gradient(135deg, #ff4444, #ff8888);
+}
+
+.sliderLabel:has(#slider-g) .channelLabel {
+  background: linear-gradient(135deg, #44ff44, #88ff88);
+}
+
+.sliderLabel:has(#slider-b) .channelLabel {
+  background: linear-gradient(135deg, #4444ff, #8888ff);
+}
+
+.slider {
+  flex: 1;
+  height: 8px;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background: linear-gradient(to right, #ff0000, #ff00ff);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid var(--accent);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid var(--accent);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+.slider::-moz-range-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.sliderValue {
+  width: 45px;
+  text-align: right;
+  font-family: 'Monaco', 'Menlo', monospace;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dropdown {
+    animation: none;
   }
-  50% {
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
-  }
-  100% {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  
+  .slider::-webkit-slider-thumb:hover {
+    transform: none;
   }
 }

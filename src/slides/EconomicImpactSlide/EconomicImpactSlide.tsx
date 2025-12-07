@@ -54,10 +54,6 @@ export const EconomicImpactSlide: React.FC = () => {
         ))}
       </div>
 
-      <div className={styles.warning}>
-        <AlertIcon size={24} color={colors[1]} style={{ marginRight: '0.5rem' }} />
-        <span>Dados estimados baseados em estudos da CNT e IPEA</span>
-      </div>
     </div>
   );
 };
