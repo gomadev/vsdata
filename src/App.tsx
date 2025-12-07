@@ -100,7 +100,10 @@ const App: React.FC = () => {
           direction === 'next' ? styles.slideNext : styles.slidePrev
         }`}
         key={currentSlide}
+        role="main"
+        aria-label={`Slide ${currentSlide + 1} de ${slides.length}: ${slides[currentSlide].title}`}
       >
+        <span className="sr-only">Slide {currentSlide + 1}: {slides[currentSlide].title}</span>
         <CurrentSlideComponent />
       </div>
 

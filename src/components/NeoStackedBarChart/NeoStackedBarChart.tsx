@@ -80,7 +80,7 @@ export default function NeoStackedBarChart({
         height={height}
         className={styles.svg}
         role="img"
-        aria-label="Gráfico de barras empilhadas"
+        aria-label={`Gráfico de barras empilhadas mostrando distribuição de ${categories.join(', ')} para ${data.length} itens`}
       >
         {/* Grid lines */}
         {[0, 25, 50, 75, 100].map((value) => (
