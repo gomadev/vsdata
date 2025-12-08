@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { SunIcon, MoonIcon } from '../Icons';
 import styles from './DarkModeSlider.module.css';
 
 export const DarkModeSlider: React.FC = () => {
@@ -109,8 +110,8 @@ export const DarkModeSlider: React.FC = () => {
     >
       {/* Fundo com gradiente */}
       <div className={styles.background}>
-        <div className={styles.lightSide}>☀️</div>
-        <div className={styles.darkSide}>🌙</div>
+        <div className={styles.lightSide}><SunIcon size={24} color="var(--accent)" /></div>
+        <div className={styles.darkSide}><MoonIcon size={24} color="var(--accent)" /></div>
       </div>
 
       {/* Indicador de progresso */}

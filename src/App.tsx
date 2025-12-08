@@ -5,23 +5,24 @@ import { SlideNavigation } from './components/SlideNavigation';
 import { ThemeToggle } from './components/ThemeToggle';
 import { ColorPaletteFilter } from './components/ColorPaletteFilter/ColorPaletteFilter';
 import { TextColorFilter } from './components/TextColorFilter/TextColorFilter';
+import { TireMarksBackground } from './components/TireMarksBackground';
 import { ColorPaletteProvider, useColorPalette } from './contexts/ColorPaletteContext';
 import {
   IntroSlide,
   ContextSlide,
-  DataOverviewSlide,
   StatisticsSlide,
   CriticalAnalysisSlide,
   ComparisonSlide,
+  DegradationTrendSlide,
+  KilometerageAnalysisSlide,
   TimelineSlide,
+  RoadsAnalysisSlide,
   VisualizationSlide,
-  BestWorstSlide,
   RegionComparisonSlide,
   NorthAnalysisSlide,
   SoutheastAnalysisSlide,
   HeatmapSlide,
   StackedAreaSlide,
-  HighwayAnalysisSlide,
   SurfaceTypeSlide,
   LaneAnalysisSlide,
   EconomicImpactSlide,
@@ -41,23 +42,23 @@ import './styles/variables.css';
 import './styles/global.css';
 import styles from './App.module.css';
 
-// Configuração dos slides - 28 SLIDES TOTAIS!
+// Configuração dos slides - OTIMIZADOS COM CONTEÚDO ÚNICO
 const slides: Slide[] = [
   { id: 1, component: IntroSlide, title: 'Introdução' },
   { id: 2, component: ContextSlide, title: 'O Problema' },
-  { id: 3, component: DataOverviewSlide, title: 'Distribuição ICM' },
-  { id: 4, component: StatisticsSlide, title: 'Estatísticas Gerais' },
-  { id: 5, component: CriticalAnalysisSlide, title: 'Análise Crítica' },
-  { id: 6, component: ComparisonSlide, title: 'BOM vs PÉSSIMO' },
-  { id: 7, component: TimelineSlide, title: 'Evolução por Trecho' },
-  { id: 8, component: VisualizationSlide, title: 'Top 10 Estados' },
-  { id: 9, component: BestWorstSlide, title: 'Melhores vs Piores' },
-  { id: 10, component: RegionComparisonSlide, title: 'Comparação Regional' },
-  { id: 11, component: NorthAnalysisSlide, title: 'Análise Região Norte' },
-  { id: 12, component: SoutheastAnalysisSlide, title: 'Análise Região Sudeste' },
-  { id: 13, component: HeatmapSlide, title: 'Matriz UF x Categoria' },
-  { id: 14, component: StackedAreaSlide, title: 'Distribuição por UF' },
-  { id: 15, component: HighwayAnalysisSlide, title: 'Top Rodovias' },
+  { id: 3, component: StatisticsSlide, title: 'Estatísticas Gerais' },
+  { id: 4, component: KilometerageAnalysisSlide, title: 'Análise de Quilometragem' },
+  { id: 5, component: DegradationTrendSlide, title: 'Análise de Degradação' },
+  { id: 6, component: CriticalAnalysisSlide, title: 'Análise Crítica' },
+  { id: 7, component: ComparisonSlide, title: 'BOM vs PÉSSIMO' },
+  { id: 8, component: TimelineSlide, title: 'Evolução por Trecho' },
+  { id: 9, component: RoadsAnalysisSlide, title: 'Análise por Rodovia' },
+  { id: 10, component: VisualizationSlide, title: 'Top 10 Estados' },
+  { id: 11, component: RegionComparisonSlide, title: 'Comparação Regional' },
+  { id: 12, component: NorthAnalysisSlide, title: 'Análise Região Norte' },
+  { id: 13, component: SoutheastAnalysisSlide, title: 'Análise Região Sudeste' },
+  { id: 14, component: HeatmapSlide, title: 'Matriz UF x Categoria' },
+  { id: 15, component: StackedAreaSlide, title: 'Distribuição por UF' },
   { id: 16, component: SurfaceTypeSlide, title: 'Tipo de Pavimentação' },
   { id: 17, component: LaneAnalysisSlide, title: 'Distribuição por Categoria' },
   { id: 18, component: EconomicImpactSlide, title: 'Impacto Econômico' },
@@ -91,6 +92,8 @@ const App: React.FC = () => {
 
   return (
     <div className={styles.app}>
+      <TireMarksBackground />
+      
       <div className={styles.filterContainer}>
         <ColorPaletteFilter onPaletteChange={setColorPalette} />
         <TextColorFilter />

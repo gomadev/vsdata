@@ -1,14 +1,12 @@
 import React from 'react';
 import { useICMData } from '../../hooks/useICMData';
 import { useColorPalette } from '../../contexts/ColorPaletteContext';
-import { useDynamicTextColors } from '../../hooks/useDynamicTextColors';
 import { ForestIcon, SunIcon, WheatIcon, CityIcon, SnowIcon, CityIcon as MapIcon } from '../../components/Icons';
 import styles from './RegionComparisonSlide.module.css';
 
 export const RegionComparisonSlide: React.FC = () => {
   const { data, loading } = useICMData();
   const { colors } = useColorPalette();
-  const textColors = useDynamicTextColors();
 
   if (loading || !data.length) {
     return (

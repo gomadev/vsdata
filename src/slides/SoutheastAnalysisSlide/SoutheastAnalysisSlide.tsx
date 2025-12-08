@@ -1,14 +1,12 @@
 import React, { useMemo } from 'react';
 import { useICMData } from '../../hooks/useICMData';
 import { useColorPalette } from '../../contexts/ColorPaletteContext';
-import { useDynamicTextColors } from '../../hooks/useDynamicTextColors';
-import { CityIcon, ChartIcon } from '../../components/Icons';
+import { CityIcon, RoadIcon, AlertIcon } from '../../components/Icons';
 import styles from './SoutheastAnalysisSlide.module.css';
 
 export const SoutheastAnalysisSlide: React.FC = () => {
   const { data, loading } = useICMData();
   const { colors } = useColorPalette();
-  const textColors = useDynamicTextColors();
 
   const seStats = useMemo(() => {
     if (!data.length) return [];
@@ -58,11 +56,11 @@ export const SoutheastAnalysisSlide: React.FC = () => {
 
             <div className={styles.metrics}>
               <div className={styles.metric}>
-                <span className={styles.metricIcon}>📏</span>
+                <span className={styles.metricIcon}><RoadIcon size={20} color="var(--accent)" /></span>
                 <span className={styles.metricText}>{(stat.count / 1000).toFixed(1)}k km</span>
               </div>
               <div className={styles.metric}>
-                <span className={styles.metricIcon}>🚨</span>
+                <span className={styles.metricIcon}><AlertIcon size={20} color="var(--accent)" /></span>
                 <span className={styles.metricText}>{stat.critical.toFixed(0)}% crítico</span>
               </div>
             </div>

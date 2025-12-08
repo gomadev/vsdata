@@ -250,7 +250,7 @@ export const NeoPieChart: React.FC<PieChartProps> = ({
       
       {hasSmallSlices && !isExpanded && (
         <div className={styles.hint}>
-          💡 Passe o mouse nas fatias pequenas para expandir
+          ℹ️ Passe o mouse nas fatias pequenas para expandir
         </div>
       )}
     </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { NeoCardProps } from '../../types';
+import type { NeoCardProps } from '../../types';
 import styles from './NeoCard.module.css';
 
 export const NeoCard: React.FC<NeoCardProps> = ({

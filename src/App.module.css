@@ -27,6 +27,8 @@
   align-items: center;
   justify-content: center;
   padding-bottom: 120px; /* Espaço para a navegação */
+  position: relative;
+  z-index: 1;
 }
 
 /* Animações de transição entre slides */

@@ -10,11 +10,11 @@ interface DarkModeMode {
 }
 
 const DARK_MODES: DarkModeMode[] = [
-  { id: 'light', label: 'Light', progress: 0, icon: '☀️', description: 'Modo claro' },
-  { id: 'transition-25', label: '25%', progress: 0.25, icon: '🌤️', description: 'Pouco escuro' },
-  { id: 'transition-50', label: '50%', progress: 0.5, icon: '🌓', description: 'Meia transição' },
-  { id: 'transition-75', label: '75%', progress: 0.75, icon: '🌙', description: 'Quase escuro' },
-  { id: 'dark', label: 'Dark', progress: 1, icon: '🌚', description: 'Modo escuro' },
+  { id: 'light', label: 'Light', progress: 0, icon: '☀', description: 'Modo claro' },
+  { id: 'transition-25', label: '25%', progress: 0.25, icon: '◐', description: 'Pouco escuro' },
+  { id: 'transition-50', label: '50%', progress: 0.5, icon: '◑', description: 'Meia transição' },
+  { id: 'transition-75', label: '75%', progress: 0.75, icon: '◕', description: 'Quase escuro' },
+  { id: 'dark', label: 'Dark', progress: 1, icon: '●', description: 'Modo escuro' },
 ];
 
 export const DarkModeCarousel: React.FC = () => {

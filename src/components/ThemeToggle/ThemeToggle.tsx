@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SunIcon, MoonIcon } from '../Icons';
 import styles from './ThemeToggle.module.css';
 
 export const ThemeToggle: React.FC = () => {
@@ -82,7 +83,7 @@ export const ThemeToggle: React.FC = () => {
       title={isDark ? 'Modo Claro' : 'Modo Escuro'}
       aria-label={isDark ? 'Ativar modo claro' : 'Ativar modo escuro'}
     >
-      {isDark ? '☀️' : '🌙'}
+      {isDark ? <SunIcon size={20} color="currentColor" /> : <MoonIcon size={20} color="currentColor" />}
     </button>
   );
 };

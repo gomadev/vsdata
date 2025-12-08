@@ -167,3 +167,64 @@ svg, line, rect, circle, path {
               text-shadow 0.6s cubic-bezier(0.4, 0.0, 0.2, 1),
               box-shadow 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
+
+/* Print styles para PDF */
+@media print {
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  .filterContainer,
+  .SlideNavigation,
+  [class*="TireMarksBackground"],
+  .sr-only {
+    display: none !important;
+  }
+
+  .slideContainer {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 2rem;
+    page-break-after: always;
+    break-after: page;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: none;
+  }
+
+  .slideContainer > * {
+    animation: none;
+    transition: none;
+  }
+
+  body[data-theme="dark"] .slideContainer {
+    background: white;
+    color: black;
+  }
+
+  /* Garantir que tudo fica preto/branco */
+  h1, h2, h3, h4, h5, h6 {
+    color: black !important;
+  }
+
+  p, span, div {
+    color: black !important;
+  }
+
+  svg {
+    color: black !important;
+  }
+
+  button, input, select, textarea {
+    display: none !important;
+  }
+}

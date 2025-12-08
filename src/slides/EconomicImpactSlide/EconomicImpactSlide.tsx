@@ -1,6 +1,6 @@
 import React from 'react';
 import { useColorPalette } from '../../contexts/ColorPaletteContext';
-import { TruckIcon, ClockIcon, MoneyIcon, WrenchIcon, AlertIcon } from '../../components/Icons';
+import { TruckIcon, ClockIcon, MoneyIcon, WrenchIcon } from '../../components/Icons';
 import styles from './EconomicImpactSlide.module.css';
 
 export const EconomicImpactSlide: React.FC = () => {

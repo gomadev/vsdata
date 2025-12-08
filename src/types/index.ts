@@ -20,6 +20,8 @@ export interface NeoButtonProps {
   variant?: 'raised' | 'pressed' | 'flat';
   size?: 'sm' | 'md' | 'lg';
   className?: string;
+  title?: string;
+  'aria-label'?: string;
 }
 
 export interface NeoCardProps {

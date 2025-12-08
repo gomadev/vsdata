@@ -1,14 +1,12 @@
 import React, { useMemo } from 'react';
 import { useICMData } from '../../hooks/useICMData';
 import { useColorPalette } from '../../contexts/ColorPaletteContext';
-import { useDynamicTextColors } from '../../hooks/useDynamicTextColors';
 import { ForestIcon, ChartIcon } from '../../components/Icons';
 import styles from './NorthAnalysisSlide.module.css';
 
 export const NorthAnalysisSlide: React.FC = () => {
   const { data, loading } = useICMData();
   const { colors } = useColorPalette();
-  const textColors = useDynamicTextColors();
 
   const northStats = useMemo(() => {
     if (!data.length) return [];

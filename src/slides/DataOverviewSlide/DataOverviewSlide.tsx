@@ -28,7 +28,6 @@ export const DataOverviewSlide: React.FC = () => {
     { label: 'PÉSSIMO', value: parseFloat(pessimoPct), color: colors[3], count: stats.pessimo, icon: '✕' }
   ].sort((a, b) => b.value - a.value);
 
-  const maxValue = Math.max(...data.map(d => d.value));
   const chartHeight = 280;
 
   return (

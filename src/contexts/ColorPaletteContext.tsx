@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import type { ReactNode } from 'react';
 
 export const COLOR_PALETTES = {
   default: ['#10b981', '#f59e0b', '#ef4444', '#7c2d12'],

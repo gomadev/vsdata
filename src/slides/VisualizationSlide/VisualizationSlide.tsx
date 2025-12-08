@@ -1,7 +1,6 @@
 import React from 'react';
 import { useICMData } from '../../hooks/useICMData';
 import { useColorPalette } from '../../contexts/ColorPaletteContext';
-import { useDynamicTextColors } from '../../hooks/useDynamicTextColors';
 import { getTopWorstStates } from '../../utils/dataLoader';
 import { DangerIcon, AlertIcon } from '../../components/Icons';
 import styles from './VisualizationSlide.module.css';
@@ -9,7 +8,6 @@ import styles from './VisualizationSlide.module.css';
 export const VisualizationSlide: React.FC = () => {
   const { data, loading } = useICMData();
   const { colors } = useColorPalette();
-  const textColors = useDynamicTextColors();
 
   if (loading || !data.length) {
     return (

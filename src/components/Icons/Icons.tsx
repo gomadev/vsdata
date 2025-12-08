@@ -202,3 +202,9 @@ export const GlobeIcon: React.FC<IconProps> = ({ className, size = 24, color = '
     <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke={color} strokeWidth="2"/>
   </svg>
 );
+
+export const MoonIcon: React.FC<IconProps> = ({ className, size = 24, color = 'currentColor', style }) => (
+  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={style}>
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill={`${color}33`}/>
+  </svg>
+);

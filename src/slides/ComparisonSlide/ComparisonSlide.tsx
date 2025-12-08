@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { useICMData } from '../../hooks/useICMData';
+import { CheckIcon, DangerIcon } from '../../components/Icons';
 import styles from './ComparisonSlide.module.css';
 
 export const ComparisonSlide: React.FC = () => {
@@ -27,7 +28,7 @@ export const ComparisonSlide: React.FC = () => {
       
       <div className={styles.comparison}>
         <div className={`${styles.side} ${styles.good}`}>
-          <div className={styles.emoji}>😊</div>
+          <div className={styles.emoji}><CheckIcon size={56} color="#10b981" /></div>
           <div className={styles.label}>BOM</div>
           <div className={styles.count}>{(comparison.best.count / 1000).toFixed(1)}k</div>
           <div className={styles.percentage}>{comparison.best.pct.toFixed(1)}%</div>
@@ -42,7 +43,7 @@ export const ComparisonSlide: React.FC = () => {
         </div>
 
         <div className={`${styles.side} ${styles.bad}`}>
-          <div className={styles.emoji}>😰</div>
+          <div className={styles.emoji}><DangerIcon size={56} color="#ef4444" /></div>
           <div className={styles.label}>PÉSSIMO</div>
           <div className={styles.count}>{(comparison.worst.count / 1000).toFixed(1)}k</div>
           <div className={styles.percentage}>{comparison.worst.pct.toFixed(1)}%</div>

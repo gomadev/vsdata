@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ICMData, ICMStats, loadICMData, calculateStats } from '../utils/dataLoader';
+import type { ICMData, ICMStats } from '../utils/dataLoader';
+import { loadICMData, calculateStats } from '../utils/dataLoader';
 
 export function useICMData() {
   const [data, setData] = useState<ICMData[]>([]);

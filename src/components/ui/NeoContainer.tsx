@@ -1,5 +1,5 @@
 import React from 'react';
-import { NeoContainerProps } from '../../types';
+import type { NeoContainerProps } from '../../types';
 import styles from './NeoContainer.module.css';
 
 export const NeoContainer: React.FC<NeoContainerProps> = ({
