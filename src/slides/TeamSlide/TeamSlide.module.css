@@ -5,107 +5,119 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
   padding: 2rem;
+  gap: 1.5rem;
   overflow: hidden;
 }
 
 .title {
   font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 0.5rem 0;
+  text-align: center;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  width: 100%;
+  max-width: 900px;
+}
+
+.memberCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1.8rem;
+  border-radius: 12px;
+  background: var(--bg-secondary);
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  min-height: auto;
+  justify-content: center;
+  text-align: center;
+}
+
+.memberNumber {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.memberName {
+  font-size: 1.4rem;
+  font-weight: 700;
   color: var(--text-primary);
   margin: 0;
 }
 
-.content {
-  display: flex;
-  gap: 1.5rem;
-  max-width: 1100px;
-}
-
-.card {
-  flex: 1;
-  padding: 1.5rem;
-  background: var(--bg-primary);
-  border-radius: var(--radius-lg);
-  border: 3px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 10px 10px 30px var(--shadow-dark),
-              -10px -10px 30px var(--shadow-light);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 1rem;
-  animation: cardSlide 0.6s ease-out backwards;
-  transition: all 0.3s ease;
-}
-
-.card:nth-child(1) { animation-delay: 0s; }
-.card:nth-child(2) { animation-delay: 0.2s; }
-.card:nth-child(3) { animation-delay: 0.4s; }
-
-@keyframes cardSlide {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-}
-
-.card:hover {
-  transform: translateY(-10px) scale(1.02);
-}
-
-.icon {
-  font-size: 3.5rem;
-  animation: iconFloat 3s ease-in-out infinite;
-}
-
-@keyframes iconFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-.card h3 {
-  font-size: 1.4rem;
-  color: var(--accent-dynamic);
-  margin: 0;
-  font-weight: 600;
-}
-
-.card p {
-  font-size: 1rem;
-  color: var(--text-secondary);
-  line-height: 1.8;
-  margin: 0;
-}
-
-.footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.footer p {
+.memberRole {
   font-size: 0.9rem;
-  color: var(--text-secondary);
+  color: var(--accent);
+  font-weight: 600;
   margin: 0;
 }
 
-.thanks {
-  font-size: 1.5rem !important;
-  font-weight: 700;
-  color: var(--accent) !important;
-  animation: thanksPulse 2s ease-in-out infinite;
+.memberContribution {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.5;
 }
 
-@keyframes thanksPulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 1;
+.projectInfo {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 900px;
+  margin-top: 1rem;
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  border-left: 3px solid var(--accent);
+}
+
+.infoLabel {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.infoValue {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .teamGrid {
+    grid-template-columns: 1fr;
   }
-  50% {
-    transform: scale(1.1);
-    opacity: 0.8;
+
+  .projectInfo {
+    grid-template-columns: 1fr;
   }
 }

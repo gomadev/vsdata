@@ -67,10 +67,10 @@ const slides: Slide[] = [
   { id: 22, component: ActionPlanSlide, title: 'Plano de Ação' },
   { id: 23, component: TechnologySlide, title: 'Soluções Tecnológicas' },
   { id: 24, component: NextStepsSlide, title: 'Próximos Passos' },
-  { id: 25, component: InsightsSlide, title: 'Princípios Aplicados' },
-  { id: 26, component: MethodologySlide, title: 'Metodologia' },
-  { id: 27, component: TeamSlide, title: 'Equipe & Contato' },
-  { id: 28, component: ConclusionSlide, title: 'Conclusão' },
+  { id: 25, component: InsightsSlide, title: 'Conclusões Principais' },
+  { id: 26, component: MethodologySlide, title: 'Limitações e Dificuldades' },
+  { id: 27, component: TeamSlide, title: 'Equipe do Projeto' },
+  { id: 28, component: ConclusionSlide, title: 'Conclusão Final' },
 ];
 
 const App: React.FC = () => {

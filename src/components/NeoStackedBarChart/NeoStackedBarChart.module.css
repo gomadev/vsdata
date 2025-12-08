@@ -2,14 +2,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  justify-content: center;
+  gap: 1rem;
   width: 100%;
+  height: 100%;
 }
 
 .svg {
   filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.15)) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
   width: 100%;
   height: auto;
+  display: block;
+  min-width: 0;
 }
 
 .barGroup {

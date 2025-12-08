@@ -76,8 +76,10 @@ export default function NeoStackedBarChart({
   return (
     <div className={styles.container}>
       <svg
-        width={width}
-        height={height}
+        width="100%"
+        height="100%"
+        viewBox={`0 0 ${width} ${height}`}
+        preserveAspectRatio="xMidYMid meet"
         className={styles.svg}
         role="img"
         aria-label={`Gráfico de barras empilhadas mostrando distribuição de ${categories.join(', ')} para ${data.length} itens`}

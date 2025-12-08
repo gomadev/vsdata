@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 2rem;
   padding: 2rem;
   overflow: hidden;
 }
@@ -15,84 +15,88 @@
   font-weight: 700;
   color: var(--text-primary);
   margin: 0;
+  text-align: center;
 }
 
-.findings {
+.metricsContainer {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  max-width: 1000px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  max-width: 1100px;
+  width: 100%;
 }
 
-.finding {
-  padding: 1.5rem;
-  background: var(--bg-primary);
-  border-radius: var(--radius-lg);
-  border: 3px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 10px 10px 30px var(--shadow-dark),
-              -10px -10px 30px var(--shadow-light);
-  animation: findingReveal 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
-  transition: all 0.3s ease;
-  position: relative;
-  border-left: 4px solid var(--accent);
+.metric {
+  text-align: center;
+  animation: metricReveal 0.6s ease-out backwards;
 }
 
-.finding::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent), transparent);
-  animation: lineGrow 1s ease-out forwards;
-  animation-delay: var(--delay, 0s);
-}
+.metric:nth-child(1) { animation-delay: 0s; }
+.metric:nth-child(2) { animation-delay: 0.1s; }
+.metric:nth-child(3) { animation-delay: 0.2s; }
+.metric:nth-child(4) { animation-delay: 0.3s; }
 
-.finding:nth-child(1) { --delay: 0s; animation-delay: 0s; }
-.finding:nth-child(2) { --delay: 0.2s; animation-delay: 0.2s; }
-.finding:nth-child(3) { --delay: 0.4s; animation-delay: 0.4s; }
-.finding:nth-child(4) { --delay: 0.6s; animation-delay: 0.6s; }
-
-@keyframes findingReveal {
+@keyframes metricReveal {
   from {
     opacity: 0;
-    transform: translateX(-40px) skewX(10deg);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
-    transform: translateX(0) skewX(0deg);
+    transform: translateY(0);
   }
 }
 
-@keyframes lineGrow {
+.metricValue {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.metricLabel {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.metricPercent {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.totalContainer {
+  text-align: center;
+  animation: totalReveal 0.8s ease-out 0.4s backwards;
+}
+
+@keyframes totalReveal {
   from {
-    width: 0;
+    opacity: 0;
+    transform: translateY(30px);
   }
   to {
-    width: 100%;
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-.finding:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-}
-
-.iconBox {
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
-  filter: drop-shadow(0 4px 12px rgba(239, 68, 68, 0.4));
-}
-
-.finding h3 {
-  font-size: 1.4rem;
+.totalValue {
+  font-size: 4rem;
+  font-weight: 700;
   color: var(--accent-dynamic);
-  margin: 0 0 1rem;
+  line-height: 1;
+  margin-bottom: 0.5rem;
 }
 
-.finding p {
-  font-size: 1.05rem;
+.totalLabel {
+  font-size: 1rem;
   color: var(--text-secondary);
-  line-height: 1.6;
-  margin: 0;
+  font-weight: 600;
 }
+
+
